@@ -42,7 +42,7 @@ export default function Experience() {
                     top: '-20px',
                     [role.art.side]: '-250px',
                     width: '195px',
-                    opacity: 0.25,
+                    opacity: 0.29,
                     pointerEvents: 'none',
                     userSelect: 'none',
                   }}

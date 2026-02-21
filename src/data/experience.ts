@@ -83,6 +83,11 @@ export const experience: Role[] = [
     dates: '2017',
     tagline:
       'Taught JavaScript and programming fundamentals to student and early-career professionals',
+    art: {
+      src: '/assets/tutor.png',
+      alt: 'Coding tutor illustration',
+      side: 'right',
+    },
     bullets: [],
   },
 ];

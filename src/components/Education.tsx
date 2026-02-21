@@ -9,7 +9,8 @@ const education = [
     degree: 'Web Development',
     school: 'Nashville Software School',
     url: 'https://nashvillesoftwareschool.com/',
-    detail: 'Full-stack development with JavaScript, AngularJS, NodeJS, PostgreSQL',
+    detail:
+      'Full-stack development with JavaScript, AngularJS, NodeJS, PostgreSQL',
   },
   {
     degree: 'B.Sc. Business Administration',
@@ -17,7 +18,7 @@ const education = [
     url: 'https://www.tntech.edu/',
     detail: 'Honors Scholarship, Raines Foundation Scholarship',
   },
-]
+];
 
 export default function Education() {
   return (
@@ -37,8 +38,18 @@ export default function Education() {
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         {education.map((item, i) => (
-          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <div style={{ fontSize: '16px', fontWeight: 700, color: '#1C1C1C', letterSpacing: '-0.01em' }}>
+          <div
+            key={i}
+            style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}
+          >
+            <div
+              style={{
+                fontSize: '16px',
+                fontWeight: 700,
+                color: '#1C1C1C',
+                letterSpacing: '-0.01em',
+              }}
+            >
               {item.degree}
             </div>
             <a
@@ -54,13 +65,23 @@ export default function Education() {
                 borderBottom: '1px solid transparent',
                 transition: 'border-color 0.2s',
               }}
-              onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderBottomColor = '#3D5A80')}
-              onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'transparent')}
+              onMouseEnter={(e) =>
+                ((
+                  e.currentTarget as HTMLAnchorElement
+                ).style.borderBottomColor = '#3D5A80')
+              }
+              onMouseLeave={(e) =>
+                ((
+                  e.currentTarget as HTMLAnchorElement
+                ).style.borderBottomColor = 'transparent')
+              }
             >
               {item.school}
             </a>
             {item.detail && (
-              <div style={{ fontSize: '13px', color: '#6B6B6B', lineHeight: 1.5 }}>
+              <div
+                style={{ fontSize: '13px', color: '#6B6B6B', lineHeight: 1.5 }}
+              >
                 {item.detail}
               </div>
             )}
@@ -68,5 +89,5 @@ export default function Education() {
         ))}
       </div>
     </section>
-  )
+  );
 }

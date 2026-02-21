@@ -27,7 +27,7 @@ export default function About() {
           fontSize: '18px',
           fontWeight: 500,
           lineHeight: 1.55,
-          color: '#1C1C1C',
+          color: 'var(--c-text)',
           letterSpacing: '-0.02em',
           maxWidth: '580px',
           marginBottom: '16px',
@@ -40,7 +40,7 @@ export default function About() {
           fontSize: '20px',
           fontWeight: 500,
           lineHeight: 1.55,
-          color: '#1C1C1C',
+          color: 'var(--c-text)',
           letterSpacing: '-0.02em',
           maxWidth: '580px',
           marginBottom: '16px',
@@ -59,7 +59,7 @@ export default function About() {
         style={{
           fontSize: '16px',
           lineHeight: 1.75,
-          color: '#4A4A4A',
+          color: 'var(--c-text-secondary)',
           maxWidth: '560px',
           marginBottom: '8px',
         }}
@@ -98,7 +98,7 @@ export default function About() {
         style={{
           fontSize: '16px',
           lineHeight: 1.75,
-          color: '#4A4A4A',
+          color: 'var(--c-text-secondary)',
           maxWidth: '560px',
           marginBottom: '48px',
         }}
@@ -110,9 +110,9 @@ export default function About() {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: '#3D5A80',
+            color: 'var(--c-accent)',
             textDecoration: 'none',
-            borderBottom: '1px solid #C5D3E0',
+            borderBottom: '1px solid var(--c-accent-border)',
           }}
         >
           Waking Up
@@ -137,24 +137,24 @@ export default function About() {
             gap: '6px',
             fontSize: '13px',
             fontWeight: 500,
-            color: '#3D5A80',
+            color: 'var(--c-accent)',
             textDecoration: 'none',
             padding: '8px 14px',
-            border: '1px solid #C5D3E0',
+            border: '1px solid var(--c-accent-border)',
             borderRadius: '6px',
             transition: 'all 0.2s',
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#3D5A80';
+            el.style.backgroundColor = 'var(--c-accent)';
             el.style.color = '#fff';
-            el.style.borderColor = '#3D5A80';
+            el.style.borderColor = 'var(--c-accent)';
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#F5F8FB';
-            el.style.color = '#3D5A80';
-            el.style.borderColor = '#C5D3E0';
+            el.style.backgroundColor = 'var(--c-btn-hover-bg)';
+            el.style.color = 'var(--c-accent)';
+            el.style.borderColor = 'var(--c-accent-border)';
           }}
         >
           <svg
@@ -183,24 +183,24 @@ export default function About() {
             gap: '6px',
             fontSize: '13px',
             fontWeight: 500,
-            color: '#3D5A80',
+            color: 'var(--c-accent)',
             textDecoration: 'none',
             padding: '8px 14px',
-            border: '1px solid #C5D3E0',
+            border: '1px solid var(--c-accent-border)',
             borderRadius: '6px',
             transition: 'all 0.2s',
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#3D5A80';
+            el.style.backgroundColor = 'var(--c-accent)';
             el.style.color = '#fff';
-            el.style.borderColor = '#3D5A80';
+            el.style.borderColor = 'var(--c-accent)';
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#F5F8FB';
-            el.style.color = '#3D5A80';
-            el.style.borderColor = '#C5D3E0';
+            el.style.backgroundColor = 'var(--c-btn-hover-bg)';
+            el.style.color = 'var(--c-accent)';
+            el.style.borderColor = 'var(--c-accent-border)';
           }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -221,24 +221,24 @@ export default function About() {
             gap: '6px',
             fontSize: '13px',
             fontWeight: 500,
-            color: '#3D5A80',
+            color: 'var(--c-accent)',
             textDecoration: 'none',
             padding: '8px 14px',
-            border: '1px solid #C5D3E0',
+            border: '1px solid var(--c-accent-border)',
             borderRadius: '6px',
             transition: 'all 0.2s',
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#3D5A80';
+            el.style.backgroundColor = 'var(--c-accent)';
             el.style.color = '#fff';
-            el.style.borderColor = '#3D5A80';
+            el.style.borderColor = 'var(--c-accent)';
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget as HTMLAnchorElement;
-            el.style.backgroundColor = '#F5F8FB';
-            el.style.color = '#3D5A80';
-            el.style.borderColor = '#C5D3E0';
+            el.style.backgroundColor = 'var(--c-btn-hover-bg)';
+            el.style.color = 'var(--c-accent)';
+            el.style.borderColor = 'var(--c-accent-border)';
           }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

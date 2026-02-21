@@ -46,7 +46,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          backgroundColor: '#fff',
+          backgroundColor: 'var(--c-surface)',
           borderRadius: '12px',
           width: '100%',
           maxWidth: '680px',
@@ -65,8 +65,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             top: '14px',
             right: '14px',
             zIndex: 10,
-            background: 'rgba(255,255,255,0.9)',
-            border: '1px solid #E0DED9',
+            background: 'var(--c-surface)',
+            border: '1px solid var(--c-divider)',
             borderRadius: '6px',
             width: '32px',
             height: '32px',
@@ -74,18 +74,18 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            color: '#6B6B6B',
+            color: 'var(--c-muted)',
             transition: 'all 0.15s',
           }}
           onMouseEnter={(e) => {
             const el = e.currentTarget
-            el.style.backgroundColor = '#F2F1EE'
-            el.style.color = '#1C1C1C'
+            el.style.backgroundColor = 'var(--c-sidebar)'
+            el.style.color = 'var(--c-text)'
           }}
           onMouseLeave={(e) => {
             const el = e.currentTarget
-            el.style.backgroundColor = 'rgba(255,255,255,0.9)'
-            el.style.color = '#6B6B6B'
+            el.style.backgroundColor = 'var(--c-surface)'
+            el.style.color = 'var(--c-muted)'
           }}
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
@@ -95,7 +95,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </button>
 
         {/* Image / Carousel */}
-        <div style={{ position: 'relative', backgroundColor: '#F2F1EE', borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', backgroundColor: 'var(--c-img-bg)', borderRadius: '12px 12px 0 0', overflow: 'hidden' }}>
           {hasMultipleImages ? (
             <>
               <div ref={emblaRef} style={{ overflow: 'hidden' }}>
@@ -138,7 +138,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             style={{
               fontSize: '22px',
               fontWeight: 700,
-              color: '#1C1C1C',
+              color: 'var(--c-text)',
               letterSpacing: '-0.02em',
               marginBottom: '12px',
             }}
@@ -150,7 +150,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             style={{
               fontSize: '15px',
               lineHeight: 1.7,
-              color: '#3A3A3A',
+              color: 'var(--c-bullet)',
               marginBottom: '20px',
             }}
           >
@@ -166,8 +166,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   fontSize: '11px',
                   fontWeight: 600,
                   letterSpacing: '0.05em',
-                  color: '#3D5A80',
-                  backgroundColor: '#EBF0F7',
+                  color: 'var(--c-accent)',
+                  backgroundColor: 'var(--c-accent-light)',
                   padding: '4px 10px',
                   borderRadius: '4px',
                 }}
@@ -191,12 +191,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               color: '#fff',
               textDecoration: 'none',
               padding: '10px 18px',
-              backgroundColor: '#3D5A80',
+              backgroundColor: 'var(--c-accent)',
               borderRadius: '6px',
               transition: 'background-color 0.2s',
             }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#2C4A6E')}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = '#3D5A80')}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--c-accent-hover)')}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.backgroundColor = 'var(--c-accent)')}
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -226,8 +226,8 @@ function arrowStyle(side: 'left' | 'right'): React.CSSProperties {
     top: '50%',
     [side]: '12px',
     transform: 'translateY(-50%)',
-    background: 'rgba(255,255,255,0.9)',
-    border: '1px solid #E0DED9',
+    background: 'var(--c-surface)',
+    border: '1px solid var(--c-divider)',
     borderRadius: '6px',
     width: '36px',
     height: '36px',
@@ -235,7 +235,7 @@ function arrowStyle(side: 'left' | 'right'): React.CSSProperties {
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
-    color: '#1C1C1C',
+    color: 'var(--c-text)',
     zIndex: 5,
   }
 }

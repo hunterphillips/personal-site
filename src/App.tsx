@@ -40,7 +40,7 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#FAFAF8', minHeight: '100vh' }}>
+    <div style={{ backgroundColor: 'var(--c-bg)', minHeight: '100vh', transition: 'background-color 0.3s ease' }}>
       {isMobile ? (
         <div>
           <MobileNav activeSection={activeSection} />
@@ -48,11 +48,11 @@ export default function App() {
             style={{ padding: '0 24px', maxWidth: '680px', margin: '0 auto' }}
           >
             <About />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Projects isMobile={true} />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Experience />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Education />
           </main>
         </div>
@@ -76,16 +76,16 @@ export default function App() {
             }}
           >
             <About />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Projects isMobile={false} />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Experience />
-            <div style={{ height: '1px', backgroundColor: '#E0DED9' }} />
+            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Education />
 
             <footer
               style={{
-                borderTop: '1px solid #E0DED9',
+                borderTop: '1px solid var(--c-divider)',
                 padding: '32px 0 48px',
                 display: 'flex',
                 alignItems: 'center',
@@ -94,7 +94,7 @@ export default function App() {
                 gap: '12px',
               }}
             >
-              <span style={{ fontSize: '12px', color: '#6B6B6B' }}>
+              <span style={{ fontSize: '12px', color: 'var(--c-muted)' }}>
                 Hunter Phillips · {new Date().getFullYear()}
               </span>
               <div
@@ -137,15 +137,15 @@ function FooterLink({
       rel={external ? 'noopener noreferrer' : undefined}
       style={{
         fontSize: '12px',
-        color: '#6B6B6B',
+        color: 'var(--c-muted)',
         textDecoration: 'none',
         fontWeight: 500,
       }}
       onMouseEnter={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.color = '#1C1C1C')
+        ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-text)')
       }
       onMouseLeave={(e) =>
-        ((e.currentTarget as HTMLAnchorElement).style.color = '#6B6B6B')
+        ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
       }
     >
       {children}

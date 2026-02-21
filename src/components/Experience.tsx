@@ -18,7 +18,7 @@ export default function Experience() {
             fontWeight: 600,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: '#6B6B6B',
+            color: 'var(--c-muted)',
             margin: 0,
           }}
         >
@@ -67,7 +67,7 @@ export default function Experience() {
                     style={{
                       fontSize: '16px',
                       fontWeight: 700,
-                      color: '#1C1C1C',
+                      color: 'var(--c-text)',
                       textDecoration: 'none',
                       borderBottom: '1px solid transparent',
                       transition: 'border-color 0.2s',
@@ -75,7 +75,7 @@ export default function Experience() {
                     onMouseEnter={(e) =>
                       ((
                         e.currentTarget as HTMLAnchorElement
-                      ).style.borderBottomColor = '#1C1C1C')
+                      ).style.borderBottomColor = 'var(--c-text)')
                     }
                     onMouseLeave={(e) =>
                       ((
@@ -90,7 +90,7 @@ export default function Experience() {
                     style={{
                       fontSize: '16px',
                       fontWeight: 700,
-                      color: '#1C1C1C',
+                      color: 'var(--c-text)',
                     }}
                   >
                     {role.company}
@@ -99,7 +99,7 @@ export default function Experience() {
                 <span
                   style={{
                     fontSize: '12px',
-                    color: '#6B6B6B',
+                    color: 'var(--c-muted)',
                     fontWeight: 500,
                     whiteSpace: 'nowrap',
                   }}
@@ -113,7 +113,7 @@ export default function Experience() {
                 style={{
                   fontSize: '14px',
                   fontWeight: 600,
-                  color: '#3D5A80',
+                  color: 'var(--c-accent)',
                   marginBottom: '6px',
                 }}
               >
@@ -127,7 +127,7 @@ export default function Experience() {
                 <div
                   style={{
                     fontSize: '14px',
-                    color: '#6B6B6B',
+                    color: 'var(--c-muted)',
                   }}
                 >
                   {role.tagline}
@@ -161,7 +161,7 @@ export default function Experience() {
                         style={{
                           fontSize: '14px',
                           lineHeight: 1.65,
-                          color: '#3A3A3A',
+                          color: 'var(--c-bullet)',
                           paddingLeft: '16px',
                           position: 'relative',
                         }}
@@ -174,7 +174,7 @@ export default function Experience() {
                             width: '4px',
                             height: '4px',
                             borderRadius: '50%',
-                            backgroundColor: '#C5D3E0',
+                            backgroundColor: 'var(--c-accent-border)',
                             flexShrink: 0,
                           }}
                         />
@@ -190,7 +190,7 @@ export default function Experience() {
                 <div
                   style={{
                     height: '1px',
-                    backgroundColor: '#E0DED9',
+                    backgroundColor: 'var(--c-divider)',
                     marginTop: '48px',
                   }}
                 />

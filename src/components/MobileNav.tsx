@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTheme } from '../ThemeContext';
 
 const navItems = [
   { id: 'about', label: 'About' },
@@ -13,6 +14,7 @@ interface MobileNavProps {
 
 export default function MobileNav({ activeSection }: MobileNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { toggleTheme } = useTheme();
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -26,20 +28,22 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
         position: 'sticky',
         top: 0,
         zIndex: 20,
-        backgroundColor: '#F2F1EE',
-        borderBottom: '1px solid #E0DED9',
+        backgroundColor: 'var(--c-sidebar)',
+        borderBottom: '1px solid var(--c-divider)',
         padding: '0 20px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         height: '56px',
+        transition: 'background-color 0.3s ease, border-color 0.3s ease',
       }}
     >
       <div>
         <img
           src="/assets/initials.png"
           alt="HP"
-          style={{ height: '42px', width: 'auto', display: 'block' }}
+          onClick={toggleTheme}
+          style={{ height: '42px', width: 'auto', display: 'block', cursor: 'pointer' }}
         />
       </div>
 
@@ -50,7 +54,7 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
           border: 'none',
           cursor: 'pointer',
           padding: '4px',
-          color: '#1C1C1C',
+          color: 'var(--c-text)',
           display: 'flex',
           alignItems: 'center',
         }}
@@ -92,8 +96,8 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
             top: '56px',
             left: 0,
             right: 0,
-            backgroundColor: '#F2F1EE',
-            borderBottom: '1px solid #E0DED9',
+            backgroundColor: 'var(--c-sidebar)',
+            borderBottom: '1px solid var(--c-divider)',
             padding: '8px 0',
             zIndex: 20,
           }}
@@ -112,7 +116,7 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
                 padding: '12px 20px',
                 fontSize: '13px',
                 fontWeight: activeSection === item.id ? 600 : 500,
-                color: activeSection === item.id ? '#3D5A80' : '#1C1C1C',
+                color: activeSection === item.id ? 'var(--c-accent)' : 'var(--c-text)',
                 fontFamily: 'inherit',
                 letterSpacing: '0.08em',
                 textTransform: 'uppercase',

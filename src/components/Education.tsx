@@ -29,7 +29,7 @@ export default function Education() {
           fontWeight: 600,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
-          color: '#6B6B6B',
+          color: 'var(--c-muted)',
           marginBottom: '40px',
         }}
       >
@@ -46,7 +46,7 @@ export default function Education() {
               style={{
                 fontSize: '16px',
                 fontWeight: 700,
-                color: '#1C1C1C',
+                color: 'var(--c-text)',
                 letterSpacing: '-0.01em',
               }}
             >
@@ -59,7 +59,7 @@ export default function Education() {
               style={{
                 fontSize: '14px',
                 fontWeight: 500,
-                color: '#3D5A80',
+                color: 'var(--c-accent)',
                 textDecoration: 'none',
                 width: 'fit-content',
                 borderBottom: '1px solid transparent',
@@ -68,7 +68,7 @@ export default function Education() {
               onMouseEnter={(e) =>
                 ((
                   e.currentTarget as HTMLAnchorElement
-                ).style.borderBottomColor = '#3D5A80')
+                ).style.borderBottomColor = 'var(--c-accent)')
               }
               onMouseLeave={(e) =>
                 ((
@@ -80,7 +80,7 @@ export default function Education() {
             </a>
             {item.detail && (
               <div
-                style={{ fontSize: '13px', color: '#6B6B6B', lineHeight: 1.5 }}
+                style={{ fontSize: '13px', color: 'var(--c-muted)', lineHeight: 1.5 }}
               >
                 {item.detail}
               </div>

@@ -105,7 +105,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       <img
                         src={src}
                         alt={`${project.name} screenshot ${i + 1}`}
-                        style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
+                        style={{ width: '100%', height: '360px', objectFit: 'contain', display: 'block' }}
                       />
                     </div>
                   ))}
@@ -127,7 +127,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             <img
               src={project.images[0]}
               alt={`${project.name} screenshot`}
-              style={{ width: '100%', height: '360px', objectFit: 'cover', display: 'block' }}
+              style={{ width: '100%', height: '360px', objectFit: 'contain', display: 'block' }}
             />
           )}
         </div>

@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  --color-bg: #FAFAF8;
+  --color-sidebar: #F2F1EE;
+  --color-divider: #E0DED9;
+  --color-text: #1C1C1C;
+  --color-muted: #6B6B6B;
+  --color-accent: #3D5A80;
+  --color-accent-light: #EBF0F7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #FAFAF8;
+  color: #1C1C1C;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F2F1EE;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8C5BF;
+  border-radius: 3px;
+}
+
+/* Animated strikethrough */
+.strike-wrap {
+  position: relative;
+  display: inline-block;
+  color: #1C1C1C;
+  animation: fade-to-muted 0.4s ease-out 0.4s forwards;
+}
+.strike-wrap::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 52%;
+  height: 2px;
+  width: 0;
+  background: #9BA8B5;
+  animation: draw-strike 0.45s ease-out 0.4s forwards;
+}
+@keyframes draw-strike {
+  to { width: 100%; }
+}
+@keyframes fade-to-muted {
+  to { color: #9BA8B5; }
+}
+
+.ai-replacement {
+  opacity: 0;
+  animation: fade-in-up 0.35s ease-out 0.85s forwards;
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.n-fade {
+  opacity: 0;
+  animation: fade-in 0.3s ease-out 0.85s forwards;
+}
+@keyframes fade-in {
+  to { opacity: 1; }
+}
+
+.icon-colorize {
+  color: #9BA8B5;
+  animation: colorize 0.5s ease-out 1.5s forwards;
+}
+@keyframes colorize {
+  to { color: var(--target-color); }
+}
+
+/* Carousel slide default state — scale/opacity driven by JS in Projects.tsx
+   (applies to real slides AND Embla's loop clones, which cloneNode this class) */
+.carousel-slide {
+  transform: scale(0.88);
+  opacity: 0.6;
+  transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.25s ease;
+}

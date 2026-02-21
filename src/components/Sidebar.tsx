@@ -36,11 +36,14 @@ export default function Sidebar({ activeSection }: SidebarProps) {
     >
       {/* Initials logo */}
       <div style={{ marginBottom: '48px' }}>
-        <img
-          src="/assets/initials.png"
-          alt="HP"
-          style={{ height: '48px', width: 'auto', display: 'block' }}
-        />
+        <div className="hp-logo-wrap">
+          <img
+            src="/assets/initials.png"
+            alt="HP"
+            className="hp-logo-img"
+            style={{ height: '48px', width: 'auto' }}
+          />
+        </div>
       </div>
 
       {/* Nav */}

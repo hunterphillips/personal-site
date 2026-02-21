@@ -40,7 +40,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
           fontWeight: 600,
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
-          color: '#6B6B6B',
+          color: 'var(--c-muted)',
           marginBottom: '28px',
         }}
       >
@@ -68,7 +68,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
             left: '-1px',
             width: '48px',
             height: '100%',
-            background: 'linear-gradient(to right, #FAFAF8, transparent)',
+            background: 'linear-gradient(to right, var(--c-bg), transparent)',
             zIndex: 2,
             pointerEvents: 'none',
           }}
@@ -80,7 +80,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
             right: '-1px',
             width: '48px',
             height: '100%',
-            background: 'linear-gradient(to left, #FAFAF8, transparent)',
+            background: 'linear-gradient(to left, var(--c-bg), transparent)',
             zIndex: 2,
             pointerEvents: 'none',
           }}
@@ -142,7 +142,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
                 cursor: 'pointer',
                 padding: 0,
                 backgroundColor:
-                  i === activeIndex ? '#3D5A80' : '#C5D3E0',
+                  i === activeIndex ? 'var(--c-accent)' : 'var(--c-accent-border)',
                 transition: 'all 0.25s ease',
               }}
             />
@@ -184,8 +184,8 @@ function ProjectCard({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        backgroundColor: '#fff',
-        border: '1px solid #E0DED9',
+        backgroundColor: 'var(--c-card-bg)',
+        border: '1px solid var(--c-divider)',
         borderRadius: '10px',
         overflow: 'hidden',
         cursor: isActive ? 'pointer' : 'default',
@@ -205,7 +205,7 @@ function ProjectCard({
         style={{
           height: isMobile ? '180px' : '220px',
           overflow: 'hidden',
-          backgroundColor: '#F2F1EE',
+          backgroundColor: 'var(--c-img-bg)',
         }}
       >
         <img
@@ -228,7 +228,7 @@ function ProjectCard({
           style={{
             fontSize: '15px',
             fontWeight: 700,
-            color: '#1C1C1C',
+            color: 'var(--c-text)',
             marginBottom: '4px',
             letterSpacing: '-0.01em',
           }}
@@ -238,7 +238,7 @@ function ProjectCard({
         <div
           style={{
             fontSize: '13px',
-            color: '#6B6B6B',
+            color: 'var(--c-muted)',
             lineHeight: 1.5,
             marginBottom: '14px',
           }}
@@ -253,8 +253,8 @@ function ProjectCard({
                 fontSize: '10px',
                 fontWeight: 600,
                 letterSpacing: '0.04em',
-                color: '#3D5A80',
-                backgroundColor: '#EBF0F7',
+                color: 'var(--c-accent)',
+                backgroundColor: 'var(--c-accent-light)',
                 padding: '3px 8px',
                 borderRadius: '3px',
               }}
@@ -286,7 +286,7 @@ function NavArrow({
       style={{
         background: 'none',
         border: '1px solid',
-        borderColor: hovered ? '#3D5A80' : '#E0DED9',
+        borderColor: hovered ? 'var(--c-accent)' : 'var(--c-divider)',
         borderRadius: '50%',
         width: '32px',
         height: '32px',
@@ -294,7 +294,7 @@ function NavArrow({
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
-        color: hovered ? '#3D5A80' : '#9BA8B5',
+        color: hovered ? 'var(--c-accent)' : 'var(--c-strike)',
         transition: 'all 0.2s',
         flexShrink: 0,
       }}

@@ -1,3 +1,5 @@
+import { useTheme } from '../ThemeContext';
+
 interface SidebarProps {
   activeSection: string;
 }
@@ -10,6 +12,8 @@ const navItems = [
 ];
 
 export default function Sidebar({ activeSection }: SidebarProps) {
+  const { toggleTheme } = useTheme();
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -26,17 +30,18 @@ export default function Sidebar({ activeSection }: SidebarProps) {
         top: 0,
         left: 0,
         height: '100vh',
-        backgroundColor: '#F2F1EE',
-        borderRight: '1px solid #E0DED9',
+        backgroundColor: 'var(--c-sidebar)',
+        borderRight: '1px solid var(--c-divider)',
         display: 'flex',
         flexDirection: 'column',
         padding: '48px 32px',
         zIndex: 10,
+        transition: 'background-color 0.3s ease, border-color 0.3s ease',
       }}
     >
-      {/* Initials logo */}
+      {/* Initials logo — click to toggle theme */}
       <div style={{ marginBottom: '48px' }}>
-        <div className="hp-logo-wrap">
+        <div className="hp-logo-wrap" onClick={toggleTheme}>
           <img
             src="/assets/initials.png"
             alt="HP"
@@ -64,18 +69,18 @@ export default function Sidebar({ activeSection }: SidebarProps) {
                 fontWeight: isActive ? 600 : 500,
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: isActive ? '#3D5A80' : '#6B6B6B',
+                color: isActive ? 'var(--c-accent)' : 'var(--c-muted)',
                 fontFamily: 'inherit',
                 transition: 'color 0.2s ease',
                 position: 'relative',
               }}
               onMouseEnter={(e) => {
                 if (!isActive)
-                  (e.target as HTMLButtonElement).style.color = '#1C1C1C';
+                  (e.target as HTMLButtonElement).style.color = 'var(--c-text)';
               }}
               onMouseLeave={(e) => {
                 if (!isActive)
-                  (e.target as HTMLButtonElement).style.color = '#6B6B6B';
+                  (e.target as HTMLButtonElement).style.color = 'var(--c-muted)';
               }}
             >
               {isActive && (
@@ -87,7 +92,7 @@ export default function Sidebar({ activeSection }: SidebarProps) {
                     transform: 'translateY(-50%)',
                     width: '3px',
                     height: '16px',
-                    backgroundColor: '#3D5A80',
+                    backgroundColor: 'var(--c-accent)',
                     borderRadius: '2px',
                   }}
                 />
@@ -106,12 +111,12 @@ export default function Sidebar({ activeSection }: SidebarProps) {
         <a
           href="mailto:hkphillips42@gmail.com"
           title="Email"
-          style={{ color: '#6B6B6B', transition: 'color 0.2s' }}
+          style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#3D5A80')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-accent)')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#6B6B6B')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
           }
         >
           <svg
@@ -133,12 +138,12 @@ export default function Sidebar({ activeSection }: SidebarProps) {
           target="_blank"
           rel="noopener noreferrer"
           title="LinkedIn"
-          style={{ color: '#6B6B6B', transition: 'color 0.2s' }}
+          style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#3D5A80')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-accent)')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#6B6B6B')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
           }
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -152,12 +157,12 @@ export default function Sidebar({ activeSection }: SidebarProps) {
           target="_blank"
           rel="noopener noreferrer"
           title="GitHub"
-          style={{ color: '#6B6B6B', transition: 'color 0.2s' }}
+          style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#3D5A80')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-accent)')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = '#6B6B6B')
+            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
           }
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

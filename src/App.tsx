@@ -42,7 +42,7 @@ export default function App() {
   return (
     <div style={{ backgroundColor: 'var(--c-bg)', minHeight: '100vh', transition: 'background-color 0.3s ease' }}>
       {isMobile ? (
-        <div>
+        <div style={{ overflowX: 'hidden' }}>
           <MobileNav activeSection={activeSection} />
           <main
             style={{ padding: '0 24px', maxWidth: '680px', margin: '0 auto' }}

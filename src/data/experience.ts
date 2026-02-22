@@ -29,15 +29,13 @@ export const experience: Role[] = [
     companyUrl: 'https://govcio.com/',
     dates: '2021',
     tagline:
-      'Built JEDI - an ETL integration used to synchronize millions of records in ServiceNow to external reporting software, supporting both real-time and batched updates',
+      'Built JEDI - an ETL integration used to synchronize millions of records in ServiceNow to external reporting software',
     art: {
       src: '/assets/jedi.png',
       alt: 'ETL data pipeline illustration',
       side: 'left',
     },
-    bullets: [
-      // 'Built an ETL integration used to synchronize millions of records in ServiceNow to external reporting software, supporting both real-time and batched updates',
-    ],
+    bullets: [],
   },
   {
     title: 'Senior Technical Consultant',
@@ -45,15 +43,13 @@ export const experience: Role[] = [
     companyUrl: 'https://finite-partners.com/',
     dates: '2019',
     tagline:
-      'Promoted to lead our first major defense contract, enabling systems engineers to plan, configure, and provision satellite communications equipment',
+      'Promoted to lead our first major defense contract, enabling systems engineers to configure and provision satellite communications equipment',
     art: {
       src: '/assets/satellite-art.png',
       alt: 'Satellite communications illustration',
       side: 'right',
     },
-    bullets: [
-      // 'Promoted to lead our largest defense contract, enabling systems engineers to plan, configure, and provision satellite communications equipment',
-    ],
+    bullets: [],
   },
   {
     title: 'Solutions Engineer',

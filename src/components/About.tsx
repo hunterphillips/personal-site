@@ -70,11 +70,11 @@ const ICONS: { Icon: Icon; color: string }[] = [
   { Icon: PersonSimpleTaiChiIcon, color: '#B07BAC' },
 ];
 
-const NOUNS = ['collaborator', 'orchestrator', 'whisperer', 'explorer'];
+const TITLES = ['collaborator', 'orchestrator', 'whisperer', 'explorer'];
 const FADE_IN_DONE = 2000; // ms — wait after ai-replacement finishes
 const CYCLE_INTERVAL = 1300; // ms per word during cycling
 
-function CyclingNoun() {
+function CycleTitle() {
   const [index, setIndex] = useState(0);
   const [fading, setFading] = useState(false);
   const [done, setDone] = useState(false);
@@ -85,7 +85,7 @@ function CyclingNoun() {
       let current = 0;
       const interval = setInterval(() => {
         current++;
-        if (current >= NOUNS.length) {
+        if (current >= TITLES.length) {
           clearInterval(interval);
           // After last word settles, collapse the fixed width
           setTimeout(() => setDone(true), 10);
@@ -110,11 +110,13 @@ function CyclingNoun() {
         style={{
           display: 'inline-block',
           minWidth: done ? '0' : '8ch',
-          transition: 'opacity 0.3s ease, min-width 1.4s ease',
+          transition:
+            'opacity 0.3s ease, transform 0.3s ease, min-width 1.4s ease',
           opacity: fading ? 0 : 1,
+          transform: fading ? 'translateY(2px)' : 'translateY(0)',
         }}
       >
-        {NOUNS[index]}
+        {TITLES[index]}
       </span>
     </span>
   );
@@ -148,7 +150,7 @@ export default function About() {
         }}
       >
         I'm a<span className="n-fade">n</span>{' '}
-        <span className="strike-wrap">software engineer</span> <CyclingNoun />{' '}
+        <span className="strike-wrap">software engineer</span> <CycleTitle />{' '}
         building apps to make work easier and provide beautiful, intuitive user
         experiences.
       </p>

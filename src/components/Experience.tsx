@@ -1,6 +1,10 @@
 import { experience } from '../data/experience';
 
-export default function Experience() {
+interface ExperienceProps {
+  isMobile: boolean;
+}
+
+export default function Experience({ isMobile }: ExperienceProps) {
   return (
     <section id="experience" style={{ padding: '64px 0' }}>
       {/* Section header + expand all */}
@@ -32,8 +36,8 @@ export default function Experience() {
 
           return (
             <div key={i} style={{ position: 'relative' }}>
-              {/* Decorative art — positioned in the margin white space */}
-              {role.art && (
+              {/* Decorative art — desktop: positioned in the margin */}
+              {role.art && !isMobile && (
                 <img
                   src={role.art.src}
                   alt={role.art.alt}
@@ -185,13 +189,36 @@ export default function Experience() {
                 </div>
               )}
 
+              {/* Decorative art — mobile: inline below content */}
+              {role.art && isMobile && (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '-140px',
+                  }}
+                >
+                  <img
+                    src={role.art.src}
+                    alt={role.art.alt}
+                    style={{
+                      width: '150px',
+                      opacity: 0.14,
+                      pointerEvents: 'none',
+                      userSelect: 'none',
+                      marginRight: '-80px',
+                    }}
+                  />
+                </div>
+              )}
+
               {/* Divider */}
               {i < experience.length - 1 && (
                 <div
                   style={{
                     height: '1px',
                     backgroundColor: 'var(--c-divider)',
-                    marginTop: '48px',
+                    marginTop: '12px',
                   }}
                 />
               )}

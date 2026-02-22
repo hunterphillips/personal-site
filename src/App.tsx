@@ -51,7 +51,7 @@ export default function App() {
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Projects isMobile={true} />
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
-            <Experience />
+            <Experience isMobile={isMobile} />
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Education />
           </main>
@@ -79,7 +79,7 @@ export default function App() {
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Projects isMobile={false} />
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
-            <Experience />
+            <Experience isMobile={isMobile} />
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
             <Education />
 

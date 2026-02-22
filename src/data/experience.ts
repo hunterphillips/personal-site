@@ -61,7 +61,7 @@ export const experience: Role[] = [
     companyUrl: 'https://www.brookdale.com/',
     dates: '2018',
     tagline:
-      'Replaced a Service Portal, generating 2000 additional self-service requests per month',
+      'Redesigned an employee service portal, generating 2000 additional self-service requests per month',
     bullets: [],
   },
   {
@@ -82,7 +82,7 @@ export const experience: Role[] = [
     company: 'Wyzant',
     dates: '2017',
     tagline:
-      'Taught JavaScript and programming fundamentals to student and early-career professionals',
+      'Taught JavaScript and programming fundamentals to students and early-career professionals',
     art: {
       src: '/assets/tutor.png',
       alt: 'Coding tutor illustration',

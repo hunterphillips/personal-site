@@ -165,11 +165,13 @@ body {
 
 .icon-colorize {
   color: var(--c-strike);
+  opacity: 0.4;
   animation: colorize 0.75s ease-out 2.5s forwards;
 }
 @keyframes colorize {
   to {
     color: var(--target-color);
+    opacity: 1;
   }
 }
 

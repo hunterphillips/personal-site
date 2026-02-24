@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { CompassToolIcon } from '@phosphor-icons/react';
 import { projects } from '../data/projects';
 import type { Project } from '../data/projects';
 import ProjectModal from './ProjectModal';
+import SectionHeader from './SectionHeader';
 
 export default function Projects({ isMobile }: { isMobile?: boolean }) {
   const [selected, setSelected] = useState<Project | null>(null);
@@ -34,18 +36,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
 
   return (
     <section id="projects" style={{ padding: '64px 0' }}>
-      <h2
-        style={{
-          fontSize: '11px',
-          fontWeight: 600,
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          color: 'var(--c-muted)',
-          marginBottom: '28px',
-        }}
-      >
-        Projects
-      </h2>
+      <SectionHeader icon={CompassToolIcon} label="Projects" marginBottom="28px" />
 
       {/* Breakout wrapper — lets the carousel extend beyond the content column */}
       <div
@@ -94,7 +85,7 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
                 key={project.id}
                 style={{
                   flex: isMobile ? '0 0 78%' : '0 0 360px',
-                  minWidth: 0,
+                  minWidth: 'min(280px, 100%)',
                   paddingLeft: '8px',
                   paddingRight: '8px',
                 }}

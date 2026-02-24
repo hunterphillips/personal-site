@@ -45,7 +45,7 @@ export default function App() {
         <div style={{ overflowX: 'hidden' }}>
           <MobileNav activeSection={activeSection} />
           <main
-            style={{ padding: '0 24px', maxWidth: '680px', margin: '0 auto' }}
+            style={{ padding: '36px 24px 0', maxWidth: '680px', margin: '0 auto' }}
           >
             <About />
             <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />

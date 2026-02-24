@@ -1,3 +1,6 @@
+import { GraduationCapIcon } from '@phosphor-icons/react';
+import SectionHeader from './SectionHeader';
+
 const education = [
   {
     degree: 'M.S. Applied Artificial Intelligence',
@@ -23,18 +26,7 @@ const education = [
 export default function Education() {
   return (
     <section id="education" style={{ padding: '64px 0 80px' }}>
-      <h2
-        style={{
-          fontSize: '11px',
-          fontWeight: 600,
-          letterSpacing: '0.12em',
-          textTransform: 'uppercase',
-          color: 'var(--c-muted)',
-          marginBottom: '40px',
-        }}
-      >
-        Education
-      </h2>
+      <SectionHeader icon={GraduationCapIcon} label="Education" />
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
         {education.map((item, i) => (

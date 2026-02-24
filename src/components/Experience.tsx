@@ -1,4 +1,6 @@
+import { BriefcaseIcon } from '@phosphor-icons/react';
 import { experience } from '../data/experience';
+import SectionHeader from './SectionHeader';
 
 interface ExperienceProps {
   isMobile: boolean;
@@ -16,18 +18,7 @@ export default function Experience({ isMobile }: ExperienceProps) {
           marginBottom: '40px',
         }}
       >
-        <h2
-          style={{
-            fontSize: '11px',
-            fontWeight: 600,
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: 'var(--c-muted)',
-            margin: 0,
-          }}
-        >
-          Experience
-        </h2>
+        <SectionHeader icon={BriefcaseIcon} label="Experience" marginBottom="0" />
       </div>
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>

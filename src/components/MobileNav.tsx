@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../ThemeContext';
 
 const navItems = [
@@ -14,7 +14,36 @@ interface MobileNavProps {
 
 export default function MobileNav({ activeSection }: MobileNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const { toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const THRESHOLD = 8; // minimum scroll delta to trigger hide/show
+
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      if (Math.abs(delta) < THRESHOLD) return;
+
+      // Near the top — always show
+      if (currentY < 56) {
+        setHidden(false);
+      } else if (delta > 0) {
+        // Scrolling down — hide
+        setHidden(true);
+      } else {
+        // Scrolling up — show
+        setHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -22,11 +51,16 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
     setMenuOpen(false);
   };
 
+  // Keep header visible while menu is open
+  const isHidden = hidden && !menuOpen;
+
   return (
     <header
       style={{
-        position: 'sticky',
+        position: 'fixed',
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 20,
         backgroundColor: 'var(--c-sidebar)',
         borderBottom: '1px solid var(--c-divider)',
@@ -35,7 +69,9 @@ export default function MobileNav({ activeSection }: MobileNavProps) {
         alignItems: 'center',
         justifyContent: 'space-between',
         height: '56px',
-        transition: 'background-color 0.3s ease, border-color 0.3s ease',
+        transform: isHidden ? 'translateY(-100%)' : 'translateY(0)',
+        transition:
+          'transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease',
       }}
     >
       <div>

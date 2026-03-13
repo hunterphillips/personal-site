@@ -80,7 +80,8 @@ export default function Sidebar({ activeSection }: SidebarProps) {
               }}
               onMouseLeave={(e) => {
                 if (!isActive)
-                  (e.target as HTMLButtonElement).style.color = 'var(--c-muted)';
+                  (e.target as HTMLButtonElement).style.color =
+                    'var(--c-muted)';
               }}
             >
               {isActive && (
@@ -108,7 +109,7 @@ export default function Sidebar({ activeSection }: SidebarProps) {
 
       {/* Footer links */}
       <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-        <a
+        {/* <a
           href="mailto:hkphillips42@gmail.com"
           title="Email"
           style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
@@ -132,7 +133,7 @@ export default function Sidebar({ activeSection }: SidebarProps) {
             <rect width="20" height="16" x="2" y="4" rx="2" />
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
           </svg>
-        </a>
+        </a> */}
         <a
           href="https://www.linkedin.com/in/hunter-phillips/"
           target="_blank"
@@ -140,10 +141,12 @@ export default function Sidebar({ activeSection }: SidebarProps) {
           title="LinkedIn"
           style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-accent)')
+            ((e.currentTarget as HTMLAnchorElement).style.color =
+              'var(--c-accent)')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
+            ((e.currentTarget as HTMLAnchorElement).style.color =
+              'var(--c-muted)')
           }
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -159,10 +162,12 @@ export default function Sidebar({ activeSection }: SidebarProps) {
           title="GitHub"
           style={{ color: 'var(--c-muted)', transition: 'color 0.2s' }}
           onMouseEnter={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-accent)')
+            ((e.currentTarget as HTMLAnchorElement).style.color =
+              'var(--c-accent)')
           }
           onMouseLeave={(e) =>
-            ((e.currentTarget as HTMLAnchorElement).style.color = 'var(--c-muted)')
+            ((e.currentTarget as HTMLAnchorElement).style.color =
+              'var(--c-muted)')
           }
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

@@ -19,7 +19,7 @@ const education = [
     degree: 'B.Sc. Business Administration',
     school: 'Tennessee Tech University',
     url: 'https://www.tntech.edu/',
-    detail: 'Honors Scholarship, Raines Foundation Scholarship',
+    detail: '',
   },
 ];
 
@@ -72,7 +72,11 @@ export default function Education() {
             </a>
             {item.detail && (
               <div
-                style={{ fontSize: '13px', color: 'var(--c-muted)', lineHeight: 1.5 }}
+                style={{
+                  fontSize: '13px',
+                  color: 'var(--c-muted)',
+                  lineHeight: 1.5,
+                }}
               >
                 {item.detail}
               </div>

@@ -2,7 +2,7 @@
 
 > Technical Architect
 
-[Email](mailto:hkphillips42@gmail.com) / [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) / [GitHub](https://github.com/hunterphillips)
+[LinkedIn](https://www.linkedin.com/in/hunter-phillips/) / [GitHub](https://github.com/hunterphillips)
 
 ---
 
@@ -97,4 +97,3 @@ Desktop app that uses demographic inputs and health metrics to calculate a real-
 Full-stack development with JavaScript, AngularJS, NodeJS, PostgreSQL
 
 **B.Sc. Business Administration** - [Tennessee Tech University](https://www.tntech.edu/)
-Honors Scholarship, Raines Foundation Scholarship

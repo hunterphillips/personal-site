@@ -40,19 +40,35 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: 'var(--c-bg)', minHeight: '100vh', transition: 'background-color 0.3s ease' }}>
+    <div
+      style={{
+        backgroundColor: 'var(--c-bg)',
+        minHeight: '100vh',
+        transition: 'background-color 0.3s ease',
+      }}
+    >
       {isMobile ? (
         <div style={{ overflowX: 'hidden' }}>
           <MobileNav activeSection={activeSection} />
           <main
-            style={{ padding: '36px 24px 0', maxWidth: '680px', margin: '0 auto' }}
+            style={{
+              padding: '36px 24px 0',
+              maxWidth: '680px',
+              margin: '0 auto',
+            }}
           >
             <About />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Projects isMobile={true} />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Experience isMobile={isMobile} />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Education />
           </main>
         </div>
@@ -76,11 +92,17 @@ export default function App() {
             }}
           >
             <About />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Projects isMobile={false} />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Experience isMobile={isMobile} />
-            <div style={{ height: '1px', backgroundColor: 'var(--c-divider)' }} />
+            <div
+              style={{ height: '1px', backgroundColor: 'var(--c-divider)' }}
+            />
             <Education />
 
             <footer
@@ -100,9 +122,6 @@ export default function App() {
               <div
                 style={{ display: 'flex', gap: '16px', alignItems: 'center' }}
               >
-                <FooterLink href="mailto:hkphillips42@gmail.com">
-                  Email
-                </FooterLink>
                 <FooterLink
                   href="https://www.linkedin.com/in/hunter-phillips/"
                   external

@@ -1,6 +1,6 @@
 # hunterphillips.dev
 
-![alt text](/site/public/assets/site-landing.png)
+![alt text](/public/assets/site-landing.png)
 
 Personal portfolio site
 

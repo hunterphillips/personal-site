@@ -7,6 +7,7 @@ export interface Project {
   tags: string[];
   github: string;
   link?: string;
+  caseStudyPath?: string;
 }
 
 export const projects: Project[] = [
@@ -28,6 +29,17 @@ export const projects: Project[] = [
     images: ['/assets/email-writer.png'],
     tags: ['Python', 'OpenAI', 'Streamlit', 'Fine-tuning'],
     github: 'https://github.com/hunterphillips/email-writer',
+  },
+  {
+    id: 'servicenow-docs-mcp',
+    name: 'ServiceNow Docs MCP',
+    shortDescription: 'Hosted MCP server for ServiceNow documentation search',
+    fullDescription:
+      'A Python MCP server that gives AI agents semantic search over 287k chunks of ServiceNow documentation, with product-bundle filtering, full-page reconstruction, and both local stdio and hosted HTTP transports.',
+    images: ['/assets/sn-doc-mcp-demo.png'],
+    tags: ['Python', 'MCP', 'RAG', 'ChromaDB', 'Fly.io'],
+    github: 'https://github.com/hunterphillips/sn-doc-search',
+    caseStudyPath: '/case-studies/servicenow-docs-mcp',
   },
   {
     id: 'sn-mockup',

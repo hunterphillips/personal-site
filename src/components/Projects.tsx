@@ -5,6 +5,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../data/projects';
 import ProjectModal from './ProjectModal';
 import SectionHeader from './SectionHeader';
+import { navigateTo } from '../navigation';
 
 export default function Projects({ isMobile }: { isMobile?: boolean }) {
   const [selected, setSelected] = useState<Project | null>(null);
@@ -98,7 +99,11 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
                   isMobile={isMobile}
                   onClick={() => {
                     if (i === activeIndex) {
-                      setSelected(project);
+                      if (project.caseStudyPath) {
+                        navigateTo(project.caseStudyPath);
+                      } else {
+                        setSelected(project);
+                      }
                     } else {
                       emblaApi?.scrollTo(i);
                     }
@@ -256,6 +261,20 @@ function ProjectCard({
             </span>
           ))}
         </div>
+        {project.caseStudyPath && (
+          <div
+            style={{
+              marginTop: '16px',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              color: isActive ? 'var(--c-accent)' : 'var(--c-muted)',
+            }}
+          >
+            Read case study
+          </div>
+        )}
       </div>
     </div>
   );

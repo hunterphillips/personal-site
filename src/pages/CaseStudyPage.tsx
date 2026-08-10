@@ -17,7 +17,7 @@ export default function CaseStudyPage({ caseStudy }: { caseStudy: CaseStudy }) {
     ) as HTMLMetaElement | null;
     const previousDescription = descriptionTag?.content;
 
-    document.title = `${caseStudy.title} | Hunter Phillips`;
+    document.title = `${caseStudy.title} — Hunter Phillips`;
     if (descriptionTag) {
       descriptionTag.content = caseStudy.summary;
     }

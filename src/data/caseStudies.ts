@@ -119,3 +119,5 @@ export const serviceNowDocsCaseStudy: CaseStudy = {
     },
   ],
 };
+
+export const caseStudies: CaseStudy[] = [serviceNowDocsCaseStudy];

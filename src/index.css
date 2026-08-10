@@ -86,9 +86,15 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent horizontal overflow from expanding the mobile layout viewport:
+     the prerendered desktop markup is wider than a phone screen, and Android
+     Chrome would grow window.innerWidth to fit it, making the app mount in
+     desktop mode. */
+  overflow-x: clip;
 }
 
 body {
+  overflow-x: clip;
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--c-bg);
   color: var(--c-text);

@@ -172,28 +172,39 @@ function renderLlmsTxt(projects, caseStudies) {
   const lines = [
     '# Hunter Phillips',
     '',
-    '> Technical Architect; AI tooling, platform modernization, federal & commercial.',
+    '> Personal portfolio of Hunter Phillips, a Technical Architect specializing in AI tooling and platform modernization for federal and commercial organizations.',
     '',
-    'A concise guide to Hunter Phillips’s profile, work, and project documentation.',
+    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. There is no contact form or public email — contact is via [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) or [GitHub](https://github.com/hunterphillips).',
     '',
     '## Profile',
     '',
-    '- [Full profile & experience](/me/README.md)',
-    '- [Resume](/me/resume.pdf)',
+    '- [Full profile](/me/README.md): canonical work history with roles, dates, and outcome metrics, plus projects and education',
+    '- [Summary](/me/summary.md): short personal introduction',
+    '- [Qualifications](/me/qualifications.md): common job-description requirements mapped to specific experience',
+    '- [Resume](/me/resume.pdf): formatted resume (PDF)',
     '',
     '## Projects',
     '',
     ...projects.map(
       (project) =>
-        `- [${project.name}](${project.github}) — ${project.shortDescription}`,
+        `- [${project.name}](${project.github}): ${project.shortDescription}`,
     ),
     '',
     '## Case Studies',
     '',
     ...caseStudies.map(
       (caseStudy) =>
-        `- [${caseStudy.title}](${caseStudy.path}) — [Markdown](/case-studies/${caseStudy.slug}.md)`,
+        `- [${caseStudy.title}](/case-studies/${caseStudy.slug}.md): ${caseStudy.summary} HTML version at ${caseStudy.path}`,
     ),
+    '',
+    '## Agents',
+    '',
+    '- [Profile lookup skill](/agents/SKILL.md): agent skill (SKILL.md format) describing how to retrieve structured information from this site',
+    '',
+    '## Optional',
+    '',
+    '- [Detailed project write-ups](/me/projects.md): longer prose descriptions of selected projects',
+    '- [Sitemap](/sitemap.xml): all HTML routes',
   ];
 
   return `${lines.join('\n')}\n`;

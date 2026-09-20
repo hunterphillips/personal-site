@@ -24,6 +24,10 @@ smaller, stable, and canonical.
 
 All URLs are relative to `https://hunterphillips.dev`.
 
+Content negotiation also works: send `Accept: text/markdown` to `/` or to any
+case-study URL and you are redirected to that page's markdown, so you do not
+need to know the table above to get markdown back.
+
 ## Procedure
 
 1. Fetch `/llms.txt` first — it enumerates current content, including the case-study

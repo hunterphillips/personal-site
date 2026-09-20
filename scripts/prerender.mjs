@@ -186,7 +186,7 @@ function renderLlmsTxt(projects, caseStudies) {
     '',
     '> Personal portfolio of Hunter Phillips, an AI Architect specializing in agent-native systems, developer tooling, and platform modernization for federal and commercial organizations.',
     '',
-    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. No contact form or email address is published in the HTML or markdown — the intended channels are [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) and [GitHub](https://github.com/hunterphillips).',
+    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. Sending `Accept: text/markdown` to `/` or to any case-study URL redirects to the markdown for that page. No contact form or email address is published in the HTML or markdown — the intended channels are [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) and [GitHub](https://github.com/hunterphillips).',
     '',
     '## Profile',
     '',

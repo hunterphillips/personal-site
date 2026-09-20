@@ -1,4 +1,23 @@
+# The Content Usage directives below use the syntax and vocabulary of the
+# IETF AI Preferences (aipref) working group draft and have the meanings
+# set forth there. See https://contentsignals.org/.
+#
+#   search    building a search index and returning hyperlinks and short
+#             excerpts. Does not include AI-generated search summaries.
+#   ai-input  inputting content into one or more AI models at request time
+#             (retrieval-augmented generation, grounding, or other real-time
+#             use of content for generative AI answers).
+#   ai-train  training or fine-tuning AI models.
+#
+# A signal set to "yes" grants permission for that use. A signal set to "no"
+# withholds it. A use with no signal is neither granted nor restricted here.
+#
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT-SIGNALS ARE EXPRESS RESERVATIONS OF
+# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON
+# COPYRIGHT AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 
 Sitemap: https://hunterphillips.dev/sitemap.xml

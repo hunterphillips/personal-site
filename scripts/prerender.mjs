@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -64,6 +65,7 @@ function homeMetadata() {
     canonical,
     image,
     type: 'website',
+    markdownHref: '/me/README.md',
     jsonLd,
   });
 }
@@ -94,6 +96,7 @@ function caseStudyMetadata(caseStudy) {
     canonical,
     image,
     type: 'article',
+    markdownHref: `/case-studies/${caseStudy.slug}.md`,
     jsonLd,
   });
 }
@@ -105,12 +108,16 @@ function routeMetadata({
   canonical,
   image,
   type,
+  markdownHref,
   jsonLd,
 }) {
   return `<!-- route-meta:start -->
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${escapeHtml(canonical)}" />
+    <link rel="alternate" type="text/markdown" href="${escapeHtml(markdownHref)}" title="This page in markdown" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt content index" />
+    <link rel="service-doc" type="text/markdown" href="/agents/SKILL.md" title="Agent skill for this site" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(socialDescription)}" />
     <meta property="og:type" content="${type}" />
@@ -205,6 +212,7 @@ function renderLlmsTxt(projects, caseStudies) {
     '## Agents',
     '',
     '- [Profile lookup skill](/agents/SKILL.md): agent skill (SKILL.md format) describing how to retrieve structured information from this site',
+    '- [Agent skills index](/.well-known/agent-skills/index.json): skills discovery index (Agent Skills Discovery 0.2.0) with a sha256 digest of the skill',
     '',
     '## Optional',
     '',
@@ -213,6 +221,34 @@ function renderLlmsTxt(projects, caseStudies) {
   ];
 
   return `${lines.join('\n')}\n`;
+}
+
+function renderSkillsIndex(skillSource) {
+  const name = /^name:\s*(.+)$/m.exec(skillSource)?.[1].trim();
+  const description = /^description:\s*(.+)$/m.exec(skillSource)?.[1].trim();
+
+  if (!name || !description) {
+    throw new Error('Could not read name/description from public/agents/SKILL.md');
+  }
+
+  const digest = createHash('sha256').update(skillSource, 'utf8').digest('hex');
+
+  return `${JSON.stringify(
+    {
+      $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json',
+      skills: [
+        {
+          name,
+          type: 'skill-md',
+          description,
+          url: `${siteUrl}/agents/SKILL.md`,
+          digest: `sha256:${digest}`,
+        },
+      ],
+    },
+    null,
+    2,
+  )}\n`;
 }
 
 function renderSitemap(caseStudies) {
@@ -271,6 +307,17 @@ async function main() {
       renderLlmsTxt(projects, caseStudies),
     );
     await writeFile(resolve(distDir, 'sitemap.xml'), renderSitemap(caseStudies));
+
+    const skillSource = await readFile(
+      resolve(rootDir, 'public', 'agents', 'SKILL.md'),
+      'utf8',
+    );
+    const skillsIndexDir = resolve(distDir, '.well-known', 'agent-skills');
+    await mkdir(skillsIndexDir, { recursive: true });
+    await writeFile(
+      resolve(skillsIndexDir, 'index.json'),
+      renderSkillsIndex(skillSource),
+    );
   } finally {
     await rm(ssrDir, { recursive: true, force: true });
   }

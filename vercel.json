@@ -1,5 +1,16 @@
 {
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt content index\", </me/README.md>; rel=\"alternate\"; type=\"text/markdown\"; title=\"Full profile in markdown\", </agents/SKILL.md>; rel=\"service-doc\"; type=\"text/markdown\"; title=\"Agent skill for this site\", </.well-known/agent-skills/index.json>; rel=\"describedby\"; type=\"application/json\"; title=\"Agent skills discovery index\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -45,6 +45,10 @@ site/
 ## Agent readability
 
 `npm run build` prerenders each route to static HTML (with per-route meta and
-JSON-LD) and generates `sitemap.xml`, `llms.txt`, and a markdown mirror per case
-study — so crawlers and AI agents that don't execute JavaScript still see full
-content. See `/llms.txt` on the deployed site for the agent-facing index.
+JSON-LD) and generates `sitemap.xml`, `llms.txt`, a markdown mirror per case
+study, and `.well-known/agent-skills/index.json` — so crawlers and AI agents that
+don't execute JavaScript still see full content. Each page carries
+`rel="alternate" type="text/markdown"` pointing at its markdown mirror, and
+`vercel.json` sets a matching RFC 8288 `Link` header at the origin. `robots.txt`
+declares Content Signals (`search=yes, ai-input=yes, ai-train=no`). See
+`/llms.txt` on the deployed site for the agent-facing index.

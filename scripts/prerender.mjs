@@ -21,11 +21,11 @@ function serializeJsonLd(value) {
 }
 
 function homeMetadata() {
-  const title = 'Hunter Phillips — Technical Architect';
+  const title = 'Hunter Phillips — AI Architect';
   const description =
-    'Hunter Phillips is a Technical Architect leading AI product and tooling adoption across federal and commercial digital transformation.';
+    'Hunter Phillips is an AI Architect building agent-native systems and developer tooling, with a decade of platform modernization across federal and commercial organizations.';
   const socialDescription =
-    'Technical Architect leading AI product and tooling adoption across federal and commercial digital transformation.';
+    'AI Architect building agent-native systems and developer tooling across federal and commercial organizations.';
   const canonical = `${siteUrl}/`;
   const image = `${siteUrl}/assets/site-landing.png`;
   const jsonLd = {
@@ -35,8 +35,13 @@ function homeMetadata() {
         '@type': 'Person',
         '@id': `${siteUrl}/#person`,
         name: 'Hunter Phillips',
-        jobTitle: 'Technical Architect',
+        jobTitle: 'AI Architect',
         url: canonical,
+        worksFor: {
+          '@type': 'Organization',
+          name: 'NowGentic',
+          url: 'https://nowgentic.com/',
+        },
         sameAs: [
           'https://www.linkedin.com/in/hunter-phillips/',
           'https://github.com/hunterphillips',
@@ -172,9 +177,9 @@ function renderLlmsTxt(projects, caseStudies) {
   const lines = [
     '# Hunter Phillips',
     '',
-    '> Personal portfolio of Hunter Phillips, a Technical Architect specializing in AI tooling and platform modernization for federal and commercial organizations.',
+    '> Personal portfolio of Hunter Phillips, an AI Architect specializing in agent-native systems, developer tooling, and platform modernization for federal and commercial organizations.',
     '',
-    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. There is no contact form or public email — contact is via [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) or [GitHub](https://github.com/hunterphillips).',
+    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. No contact form or email address is published in the HTML or markdown — the intended channels are [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) and [GitHub](https://github.com/hunterphillips).',
     '',
     '## Profile',
     '',

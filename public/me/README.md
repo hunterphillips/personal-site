@@ -1,54 +1,58 @@
 # Hunter Phillips
 
-> Technical Architect
+> AI Architect
 
-[LinkedIn](https://www.linkedin.com/in/hunter-phillips/) / [GitHub](https://github.com/hunterphillips)
+[LinkedIn](https://www.linkedin.com/in/hunter-phillips/) / [GitHub](https://github.com/hunterphillips) / [hunterphillips.dev](https://hunterphillips.dev/)
 
 ---
 
-Solutions Architect with a track record of leading platform modernization and driving user-centric automation across federal and commercial sectors. Skilled across low-code, modern web, and AI frameworks, with a passion for scalable design and measurable business impact. Active security clearance.
+Solutions architect with a track record of leading enterprise modernization and driving user-centric automation across federal and commercial sectors. Skilled in modern web and AI frameworks, with a passion for scalable design and measurable business impact. Tier 4 Public Trust.
 
 ---
 
 ## 💼 Experience
 
-**Technical Architect** @ [IntegrityPro Consulting](https://integritypro.com/) _(November 2022 - Present)_
-Leading AI product and tooling adoption
+**AI Architect** @ [NowGentic](https://nowgentic.com/) _(July 2026 - Present)_
+Leading AI architecture and agent tooling at an AI-native ServiceNow partner
+
+**Technical Architect** @ [IntegrityPro Consulting](https://integritypro.com/) _(November 2022 - July 2026)_
+Led AI product and tooling adoption
 
 - Designed an agent framework to generate application files directly from user stories via elicitation, instance analysis, and spec-driven development
+- Created an agentic RFI response workflow that orchestrates technical research, capability mapping, and response drafting, replacing a multi-day manual process
 - Rebuilt an application intake system using a guided form UX, generating a 2.7x increase in student submissions and a 70% reduction in staff workload
 - Recommended portal design, catalog taxonomy, and automation enhancements to an ESC portal that saw a 40% reduction in monthly reported incidents
-- Oversaw a SAM Pro implementation and platform upgrade, enabling a client to uncover nearly $150K in over-licensed expenses
+- Oversaw a Software Asset Management implementation and platform upgrade, enabling a client to uncover nearly $150K in over-licensed expenses
 - Lead developer of an asset tracking system for the US Forest Service, managing over $30B in inventory with geospatial mapping and integrated field surveys
-- Conducted senior-level hiring interviews along with technical training for intern development program
+- Conducted senior-level interviews and new-hire technical training
 
-**Lead Developer** @ [GovCIO](https://govcio.com/) _(May 2021 - October 2022)_
+**Team Lead** @ [GovCIO](https://govcio.com/) _(May 2021 - November 2022)_
 Guided the program's first team to employ a React microservice architecture
 
 - Co-developed an arrest reporting tool awarded the DHS Secretary's Award for Innovation, unifying previously siloed law enforcement systems
-- Built an ETL integration used to synchronize millions of records in ServiceNow to external reporting software, supporting both real-time and batched updates
-- Created a nearest-location search and calendar UI for an appointment booking portal, eliminating 8+ hour queue lines for thousands of noncitizens a month
+- Deployed an ETL integration used to synchronize millions of records in ServiceNow to external reporting software, supporting both real-time and batched updates
+- Implemented a nearest-location search and calendar UI for an appointment scheduler, eliminating 8+ hour queue lines for thousands of noncitizens a month
 
 **Senior Technical Consultant** @ [Finite Partners](https://finite-partners.com/) _(July 2019 - May 2021)_
-ServiceNow consulting & development for Fortune 500 firms & USDOD
+Technical consulting & development for Fortune 500 firms & USDOD
 
 - Promoted to lead our largest defense contract, enabling systems engineers to plan, configure, and provision satellite communications equipment
 - Led technical demonstrations and walkthroughs for executive stakeholders
-- Consistently exceeded customer expectations, earning the company’s highest utilization rate for 7 consecutive quarters
+- Earned the company's highest utilization rate for 7 consecutive quarters
 
 **Solutions Engineer** @ [Brookdale Senior Living](https://www.brookdale.com/en.html) _(July 2018 - July 2019)_
-Overhauled a Service Portal generating 2000 additional self-service requests per month
+Overhauled a service portal generating 2000 additional self-service requests per month
 
-- Led technical demonstration of the new portal at a company-hosted meetup for local developer community
+- Led a technical demonstration of the new portal at a company-hosted meetup for the local developer community
 
 **Software Engineer (Contract)** @ [Neurotargeting](https://www.linkedin.com/company/neurotargeting) _(May 2018 - June 2018)_
 Built an interface for physicians to monitor neural implant configurations, working in an AWS environment with PHP, MySQL
 
-**Coding Tutor (Freelance)** at [Wyzant](https://www.wyzant.com/) _(December 2017 - June 2018)_
-Taught JavaScript and programming concepts to students and early-career professionals
+**Coding Tutor (Freelance)** @ [Wyzant](https://www.wyzant.com/) _(December 2017 - June 2018)_
+Taught web programming fundamentals to students and early-career professionals
 
 **Lead Software Analyst** @ [Digital Dream Forge QA](https://www.digitaldreamforge.com/) _(May 2017 - November 2017)_
-Team Lead QA testing on iOS and Android
+Team lead for QA testing on iOS and Android
 
 ---
 
@@ -68,6 +72,13 @@ A fine-tuning pipeline that trains OpenAI models to write emails in your persona
 
 ---
 
+**[ServiceNow Docs MCP](https://github.com/hunterphillips/sn-doc-search)**
+A hosted MCP server that gives AI agents semantic search over 287k chunks of the ServiceNow documentation library, with product-bundle filtering, full-page reconstruction, and both local stdio and hosted HTTP transports. Full write-up: [case study](https://hunterphillips.dev/case-studies/servicenow-docs-mcp).
+<br/><br/>
+![servicenow docs mcp screenshot](https://hunterphillips.dev/assets/sn-doc-mcp-demo.png)
+
+---
+
 **[SN Mockup](https://github.com/hunterphillips/sn-mockup)**
 A rapid prototyping tool for ServiceNow platform UI, enabling high-fidelity list views, forms, and navigation without a live instance. Implements the Horizon design system, supports live table imports, full CRUD on local records, and AI-powered field content generation.
 <br/><br/>
@@ -75,7 +86,7 @@ A rapid prototyping tool for ServiceNow platform UI, enabling high-fidelity list
 
 ---
 
-**[Font Tester](https://chrome.google.com/webstore/detail/font-tester/imccahjhfnnifmcmfelbcijnilebgggg)**
+**[Font Tester](https://chromewebstore.google.com/detail/font-tester/imccahjhfnnifmcmfelbcijnilebgggg)**
 Chrome extension for developers and designers to preview Google Fonts on any live webpage in real-time, without touching the site's code. Available on the Chrome Web Store.
 <br/><br/>
 ![font tester screenshot](https://raw.githubusercontent.com/hunterphillips/cv/gh-page/assets/fontTester.jpeg)
@@ -91,9 +102,10 @@ Desktop app that uses demographic inputs and health metrics to calculate a real-
 
 ## 🎓 Education
 
-**M.S. Applied Artificial Intelligence** - [Lipscomb University](https://lipscomb.edu/academics/programs/applied-artificial-intelligence-ms-graduate-certificate)
+**M.S. Applied Artificial Intelligence** - [Lipscomb University](https://lipscomb.edu/academics/programs/applied-artificial-intelligence-ms-graduate-certificate) _(January 2025 - July 2026)_
 
-**Web Development** - [Nashville Software School](https://nashvillesoftwareschool.com/)
+**Web Development** - [Nashville Software School](https://nashvillesoftwareschool.com/) _(November 2017 - May 2018)_
 Full-stack development with JavaScript, AngularJS, NodeJS, PostgreSQL
 
-**B.Sc. Business Administration** - [Tennessee Tech University](https://www.tntech.edu/)
+**B.Sc. Business Administration** - [Tennessee Technological University](https://www.tntech.edu/)
+Honors Scholarship, Raines Foundation Scholarship

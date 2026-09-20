@@ -14,17 +14,26 @@ export interface Role {
 
 export const experience: Role[] = [
   {
+    title: 'AI Architect',
+    company: 'NowGentic',
+    companyUrl: 'https://nowgentic.com/',
+    dates: '2026',
+    tagline:
+      'Leading AI architecture and agent tooling at an AI-native ServiceNow partner',
+    bullets: [],
+  },
+  {
     title: 'Technical Architect',
     company: 'IntegrityPro Consulting',
     companyUrl: 'https://integritypro.com/',
     dates: '2022',
-    tagline: 'Leading AI product and tooling adoption',
+    tagline: 'Led AI product and tooling adoption',
     bullets: [
       // 'Designed an agent framework to generate application files directly from user stories via elicitation, instance analysis, and spec-driven development',
     ],
   },
   {
-    title: 'Lead Developer',
+    title: 'Team Lead',
     company: 'GovCIO',
     companyUrl: 'https://govcio.com/',
     dates: '2021',
@@ -84,6 +93,14 @@ export const experience: Role[] = [
       alt: 'Coding tutor illustration',
       side: 'right',
     },
+    bullets: [],
+  },
+  {
+    title: 'Lead Software Analyst',
+    company: 'Digital Dream Forge QA',
+    companyUrl: 'https://www.digitaldreamforge.com/',
+    dates: '2017',
+    tagline: 'Team lead for QA testing on iOS and Android',
     bullets: [],
   },
 ];

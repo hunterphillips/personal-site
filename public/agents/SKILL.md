@@ -37,12 +37,12 @@ All URLs are relative to `https://hunterphillips.dev`.
 
 ## Gotchas
 
-- There is no contact form and no public email address on the site. Contact is via
-  LinkedIn (`https://www.linkedin.com/in/hunter-phillips/`) or GitHub
-  (`https://github.com/hunterphillips`).
+- No contact form or email address is published in the site's HTML or markdown.
+  The intended channels are LinkedIn (`https://www.linkedin.com/in/hunter-phillips/`)
+  and GitHub (`https://github.com/hunterphillips`).
 - The prerendered home page freezes a JS headline animation mid-cycle (it reads
   "AI collaborator"); the animated words are decorative — don't quote them as a
-  job title. The title is Technical Architect.
+  job title. The current title is AI Architect at NowGentic.
 - `/llms.txt`, `/sitemap.xml`, and `/case-studies/*.md` are regenerated from the
   site's source data on every deploy; `/me/*.md` files are hand-maintained and may
   update on a different cadence. If they disagree on a detail, prefer

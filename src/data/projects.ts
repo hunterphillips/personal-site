@@ -5,12 +5,22 @@ export interface Project {
   fullDescription: string;
   images: string[];
   tags: string[];
-  github: string;
+  github?: string;
   link?: string;
   caseStudyPath?: string;
 }
 
 export const projects: Project[] = [
+  {
+    id: 'whiteboard',
+    name: 'Whiteboard',
+    shortDescription: 'Live notes and diagrams on screen during a call',
+    fullDescription:
+      'A live note-taking board for online meetings. It reads the transcript of a meeting in progress and keeps a running agenda on screen, and sketches a diagram when the conversation turns to a process or a data model.',
+    images: ['/assets/whiteboard-notes.png', '/assets/whiteboard-diagram.png'],
+    tags: ['TypeScript', 'React', 'Hono', 'Vercel AI SDK', 'Fireflies'],
+    caseStudyPath: '/case-studies/whiteboard',
+  },
   {
     id: 'feather',
     name: 'Feather',

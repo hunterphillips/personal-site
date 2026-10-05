@@ -21,6 +21,12 @@ export interface CaseStudyStep {
   detail: string;
 }
 
+export interface CaseStudyImage {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface CaseStudy {
   slug: string;
   path: string;
@@ -29,10 +35,13 @@ export interface CaseStudy {
   summary: string;
   heroImage: string;
   heroAlt: string;
+  socialImage?: string;
+  gallery?: CaseStudyImage[];
   role: string;
   stack: string[];
   metrics: CaseStudyMetric[];
   architecture: CaseStudyStep[];
+  architectureLayout?: 'pipeline' | 'steps';
   sections: CaseStudySection[];
   links: CaseStudyLink[];
 }
@@ -120,4 +129,86 @@ export const serviceNowDocsCaseStudy: CaseStudy = {
   ],
 };
 
-export const caseStudies: CaseStudy[] = [serviceNowDocsCaseStudy];
+export const whiteboardCaseStudy: CaseStudy = {
+  slug: 'whiteboard',
+  path: '/case-studies/whiteboard',
+  eyebrow: 'Case Study',
+  title: 'Whiteboard',
+  summary:
+    'A live note-taking board for online meetings. It reads the transcript of a meeting in progress and keeps a running agenda on screen: decisions, open questions, and follow-ups.',
+  heroImage: '/assets/whiteboard-replay.gif',
+  heroAlt: 'The board filling in during a replayed discovery call',
+  socialImage: '/assets/whiteboard-notes.png',
+  gallery: [
+    {
+      src: '/assets/whiteboard-notes.png',
+      alt: 'Whiteboard notes tab during a call',
+      caption: 'Live note-taking',
+    },
+    {
+      src: '/assets/whiteboard-diagram.png',
+      alt: 'Whiteboard diagram tab showing a request intake flow',
+      caption: 'A supporting diagram drawn during a workflow discussion',
+    },
+  ],
+  role: 'A shared screen for discovery calls and workshops.',
+  stack: ['TypeScript', 'React', 'Hono', 'Vercel AI SDK', 'Fireflies'],
+  metrics: [
+    {
+      value: '$1.75',
+      label: 'per meeting hour',
+      detail: 'Model cost at the default settings.',
+    },
+    {
+      value: '3',
+      label: 'diagram types',
+      detail: 'Workflows, data models, and comparison grids.',
+    },
+  ],
+  architectureLayout: 'steps',
+  architecture: [
+    {
+      title: 'Listen',
+      detail: 'Fireflies streams the meeting transcript as people talk.',
+    },
+    {
+      title: 'Take notes',
+      detail:
+        'Every ten seconds a model reads the new lines and updates the board.',
+    },
+    {
+      title: 'Tidy',
+      detail:
+        'Every ninety seconds a second model removes notes that repeat or have gone stale.',
+    },
+    {
+      title: 'Draw',
+      detail:
+        'When the conversation walks through a process, a data model, or a comparison, a model draws it.',
+    },
+  ],
+  sections: [
+    {
+      heading: 'Problem',
+      paragraphs: [
+        'Meeting summaries arrive after the meeting is over. Whiteboard shows the notes while it is still going, and draws diagrams to help visualize technical discussions.',
+      ],
+    },
+    {
+      heading: 'Features',
+      bullets: [
+        'Tracks topics, decisions, open questions, and follow-ups as they come up.',
+        'Draws workflows, data models, and comparisons as they are discussed.',
+        'Suggests follow-up questions during the meeting.',
+        'Lets the host edit or remove anything on the board.',
+        'Saves a recap when the meeting ends.',
+      ],
+    },
+  ],
+  links: [],
+};
+
+export const caseStudies: CaseStudy[] = [
+  serviceNowDocsCaseStudy,
+  whiteboardCaseStudy,
+];

@@ -276,8 +276,57 @@ export default function CaseStudyPage({ caseStudy }: { caseStudy: CaseStudy }) {
 
         <section style={{ marginBottom: '45px' }}>
           <SectionEyebrow label="Architecture" />
-          <ArchitecturePipeline steps={caseStudy.architecture} />
+          {caseStudy.architectureLayout === 'steps' ? (
+            <ArchitectureSteps steps={caseStudy.architecture} />
+          ) : (
+            <ArchitecturePipeline steps={caseStudy.architecture} />
+          )}
         </section>
+
+        {caseStudy.gallery && (
+          <section
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '20px',
+              marginBottom: '45px',
+            }}
+          >
+            {caseStudy.gallery.map((image) => (
+              <figure key={image.src} style={{ margin: 0 }}>
+                <a
+                  href={image.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'block',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    border: '1px solid var(--c-divider)',
+                    backgroundColor: 'var(--c-card-bg)',
+                  }}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    style={{ width: '100%', display: 'block' }}
+                  />
+                </a>
+                <figcaption
+                  style={{
+                    fontSize: '13px',
+                    lineHeight: 1.6,
+                    color: 'var(--c-muted)',
+                    marginTop: '10px',
+                  }}
+                >
+                  {image.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </section>
+        )}
 
         <section
           style={{
@@ -363,6 +412,70 @@ export default function CaseStudyPage({ caseStudy }: { caseStudy: CaseStudy }) {
         </section>
       </main>
     </div>
+  );
+}
+
+function ArchitectureSteps({ steps }: { steps: CaseStudyStep[] }) {
+  return (
+    <ol
+      style={{
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+        display: 'grid',
+        gap: '12px',
+        maxWidth: '820px',
+      }}
+    >
+      {steps.map((step, index) => (
+        <li
+          key={step.title}
+          style={{
+            display: 'flex',
+            gap: '16px',
+            alignItems: 'flex-start',
+            padding: '16px 18px',
+            borderRadius: '14px',
+            border: '1px solid var(--c-divider)',
+            backgroundColor: 'var(--c-card-bg)',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '12px',
+              fontWeight: 700,
+              color: 'var(--c-accent)',
+              backgroundColor: 'var(--c-accent-light)',
+              borderRadius: '999px',
+              minWidth: '26px',
+              height: '26px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            {index + 1}
+          </span>
+          <div>
+            <div
+              style={{ fontSize: '15px', fontWeight: 700, marginBottom: '4px' }}
+            >
+              {step.title}
+            </div>
+            <p
+              style={{
+                fontSize: '15px',
+                lineHeight: 1.7,
+                color: 'var(--c-text-secondary)',
+              }}
+            >
+              {step.detail}
+            </p>
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
 

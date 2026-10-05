@@ -73,7 +73,7 @@ function homeMetadata() {
 function caseStudyMetadata(caseStudy) {
   const title = `${caseStudy.title} — Hunter Phillips`;
   const canonical = `${siteUrl}${caseStudy.path}`;
-  const image = new URL(caseStudy.heroImage, siteUrl).href;
+  const image = new URL(caseStudy.socialImage ?? caseStudy.heroImage, siteUrl).href;
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
@@ -174,8 +174,21 @@ function renderCaseStudyMarkdown(caseStudy) {
     }
   }
 
-  lines.push('', '## Links', '');
-  lines.push(...caseStudy.links.map((link) => `- [${link.label}](${link.href})`));
+  if (caseStudy.gallery?.length) {
+    lines.push('', '## Screenshots', '');
+    lines.push(
+      ...caseStudy.gallery.map(
+        (image) => `- [${image.caption}](${siteUrl}${image.src})`,
+      ),
+    );
+  }
+
+  if (caseStudy.links.length) {
+    lines.push('', '## Links', '');
+    lines.push(
+      ...caseStudy.links.map((link) => `- [${link.label}](${link.href})`),
+    );
+  }
 
   return `${lines.join('\n').trim()}\n`;
 }
@@ -199,7 +212,7 @@ function renderLlmsTxt(projects, caseStudies) {
     '',
     ...projects.map(
       (project) =>
-        `- [${project.name}](${project.github}): ${project.shortDescription}`,
+        `- [${project.name}](${project.github ?? `${siteUrl}${project.caseStudyPath}`}): ${project.shortDescription}`,
     ),
     '',
     '## Case Studies',

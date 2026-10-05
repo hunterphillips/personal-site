@@ -1,5 +1,7 @@
 ## Projects
 
+**Whiteboard** — A live note-taking board for online meetings. It reads the Fireflies transcript of a meeting in progress and keeps the agenda, decisions, open questions, and follow-ups on a shared screen. A Diagram tab draws a flow, a data model, or a comparison grid when the conversation turns to one. Built with TypeScript, React, Hono, and the Vercel AI SDK. Full write-up in the [case study](https://hunterphillips.dev/case-studies/whiteboard).
+
 **[Feather](https://github.com/hunterphillips/feather)** — A lightweight chat interface for LLMs, built as a minimalist alternative to Open WebUI or LibreChat. Supports OpenAI, Anthropic, and Google providers simultaneously via a unified Express backend powered by the Vercel AI SDK. Features real-time message streaming, persistent chat history via Zustand, and a clean React/TypeScript/Tailwind frontend using shadcn/ui components.
 
 **[Email Writer](https://github.com/hunterphillips/email-writer)** — A fine-tuning pipeline that trains OpenAI models to write emails in the user's personal style. Processes Gmail exports (Google Takeout .mbox files), automatically stripping signatures, quoted text, and HTML before generating synthetic prompts for context-sparse emails. Splits data 90/10 for training and validation, uploads to OpenAI, and monitors fine-tuning progress. Includes a side-by-side comparison mode to evaluate the fine-tuned model against the base model. Offers both a Streamlit web UI and CLI workflow.

@@ -58,6 +58,13 @@ Team lead for QA testing on iOS and Android
 
 ## 🛠️ Projects
 
+**Whiteboard**
+A live note-taking board for online meetings. It reads the transcript of a meeting in progress and keeps a running agenda on screen, and sketches a diagram when the conversation turns to a process or a data model. Full write-up: [case study](https://hunterphillips.dev/case-studies/whiteboard).
+<br/><br/>
+![whiteboard screenshot](https://hunterphillips.dev/assets/whiteboard-notes.png)
+
+---
+
 **[Feather](https://github.com/hunterphillips/feather)**
 A lightweight chat interface for LLMs, built as a minimalist alternative to Open WebUI or LibreChat. Supports OpenAI, Anthropic, and Google providers simultaneously via a unified Express backend. Features real-time streaming and persistent chat history.
 <br/><br/>

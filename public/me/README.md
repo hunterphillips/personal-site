@@ -86,10 +86,10 @@ A hosted MCP server that gives AI agents semantic search over 287k chunks of the
 
 ---
 
-**[SN Mockup](https://github.com/hunterphillips/sn-mockup)**
-A rapid prototyping tool for ServiceNow platform UI, enabling high-fidelity list views, forms, and navigation without a live instance. Implements the Horizon design system, supports live table imports, full CRUD on local records, and AI-powered field content generation.
+**[Realign](https://github.com/hunterphillips/realign)**
+A macOS menu bar app that resets window positions and sizing back to a saved layout. Restore with a keyboard shortcut or automatically when you plug in or unplug external monitors. Swift and AppKit, installable through Homebrew.
 <br/><br/>
-![sn mockup screenshot](https://raw.githubusercontent.com/hunterphillips/cv/gh-page/assets/sn-mockup.png)
+![realign before and after](https://hunterphillips.dev/assets/realign.png)
 
 ---
 

@@ -53,13 +53,14 @@ export const projects: Project[] = [
     caseStudyPath: "/case-studies/servicenow-docs-mcp",
   },
   {
-    id: "sn-mockup",
-    name: "SN Mockup",
-    shortDescription: "Rapid prototyping tool for ServiceNow UI",
-    fullDescription: "A rapid prototyping tool for ServiceNow platform UI.",
-    images: ["/assets/sn-mockup.png"],
-    tags: ["React", "TypeScript", "Vite", "Tailwind", "Vercel AI SDK"],
-    github: "https://github.com/hunterphillips/sn-mockup",
+    id: "realign",
+    name: "Realign",
+    shortDescription: "macOS menu bar app that restores saved window layouts",
+    fullDescription:
+      "A macOS menu bar app that resets your window positions and sizing back to a saved layout. Arrange and save your windows, then restore them with a keyboard shortcut or automatically when you plug in or unplug external monitors. Keeps one layout for the laptop and one for each set of external monitors.",
+    images: ["/assets/realign.png"],
+    tags: ["Swift", "AppKit", "Accessibility API", "macOS", "Homebrew"],
+    github: "https://github.com/hunterphillips/realign",
   },
   {
     id: "font-tester",

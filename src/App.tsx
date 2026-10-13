@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage';
 import CaseStudyPage from './pages/CaseStudyPage';
+import AppPolicyPage from './pages/AppPolicyPage';
 import { caseStudies } from './data/caseStudies';
+import { appPolicyPages } from './data/apps';
 
 export default function App({ initialPath }: { initialPath?: string }) {
   const [pathname, setPathname] = useState(
@@ -20,6 +22,12 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
   if (caseStudy) {
     return <CaseStudyPage caseStudy={caseStudy} />;
+  }
+
+  const policyPage = appPolicyPages.find((page) => page.path === pathname);
+
+  if (policyPage) {
+    return <AppPolicyPage page={policyPage} />;
   }
 
   return <HomePage />;

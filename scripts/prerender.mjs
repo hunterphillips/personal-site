@@ -101,6 +101,42 @@ function caseStudyMetadata(caseStudy) {
   });
 }
 
+function appPolicyMetadata(page) {
+  const title = `${page.title} — Hunter Phillips`;
+  const description = `${page.heading} for ${page.app.name}, ${page.app.summary.charAt(0).toLowerCase()}${page.app.summary.slice(1)}`;
+  const canonical = `${siteUrl}${page.path}`;
+  const image = `${siteUrl}/assets/site-landing.png`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: page.title,
+    description,
+    url: canonical,
+    dateModified: page.app.updated,
+    about: {
+      '@type': 'SoftwareApplication',
+      name: page.app.name,
+      url: page.app.repo,
+      operatingSystem: page.app.minimumOs,
+    },
+    author: {
+      '@type': 'Person',
+      name: 'Hunter Phillips',
+      url: `${siteUrl}/`,
+    },
+  };
+
+  return routeMetadata({
+    title,
+    description,
+    socialDescription: description,
+    canonical,
+    image,
+    type: 'website',
+    jsonLd,
+  });
+}
+
 function routeMetadata({
   title,
   description,
@@ -115,8 +151,7 @@ function routeMetadata({
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${escapeHtml(canonical)}" />
-    <link rel="alternate" type="text/markdown" href="${escapeHtml(markdownHref)}" title="This page in markdown" />
-    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt content index" />
+${markdownHref ? `    <link rel="alternate" type="text/markdown" href="${escapeHtml(markdownHref)}" title="This page in markdown" />\n` : ''}    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt content index" />
     <link rel="service-doc" type="text/markdown" href="/agents/SKILL.md" title="Agent skill for this site" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(socialDescription)}" />
@@ -264,10 +299,11 @@ function renderSkillsIndex(skillSource) {
   )}\n`;
 }
 
-function renderSitemap(caseStudies) {
+function renderSitemap(caseStudies, appPolicyPages) {
   const urls = [
     `${siteUrl}/`,
     ...caseStudies.map(({ path }) => `${siteUrl}${path}`),
+    ...appPolicyPages.map(({ path }) => `${siteUrl}${path}`),
   ];
   const entries = urls
     .map((url) => `  <url>\n    <loc>${url}</loc>\n  </url>`)
@@ -282,7 +318,7 @@ ${entries}
 
 async function main() {
   try {
-    const { caseStudies, projects, render } = await import(
+    const { appPolicyPages, caseStudies, projects, render } = await import(
       pathToFileURL(entryPath).href
     );
     const template = await readFile(resolve(distDir, 'index.html'), 'utf8');
@@ -291,6 +327,10 @@ async function main() {
       ...caseStudies.map((caseStudy) => ({
         path: caseStudy.path,
         metadata: caseStudyMetadata(caseStudy),
+      })),
+      ...appPolicyPages.map((page) => ({
+        path: page.path,
+        metadata: appPolicyMetadata(page),
       })),
     ];
 
@@ -319,7 +359,10 @@ async function main() {
       resolve(distDir, 'llms.txt'),
       renderLlmsTxt(projects, caseStudies),
     );
-    await writeFile(resolve(distDir, 'sitemap.xml'), renderSitemap(caseStudies));
+    await writeFile(
+      resolve(distDir, 'sitemap.xml'),
+      renderSitemap(caseStudies, appPolicyPages),
+    );
 
     const skillSource = await readFile(
       resolve(rootDir, 'public', 'agents', 'SKILL.md'),

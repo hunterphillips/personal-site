@@ -4,35 +4,35 @@
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
 
-  --color-bg: #fafaf8;
-  --color-sidebar: #f2f1ee;
-  --color-divider: #e0ded9;
-  --color-text: #1c1c1c;
-  --color-muted: #6b6b6b;
-  --color-accent: #3d5a80;
-  --color-accent-light: #ebf0f7;
+  --color-bg: #fff;
+  --color-sidebar: #fff;
+  --color-divider: #e8e8ed;
+  --color-text: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-accent: #1963b3;
+  --color-accent-light: #eef5fc;
 }
 
 /* ─── Theme tokens ─── */
 :root {
-  --c-bg: #fafaf8;
+  --c-bg: #fff;
   --c-surface: #fff;
-  --c-sidebar: #f2f1ee;
-  --c-divider: #e0ded9;
-  --c-text: #1c1c1c;
-  --c-text-secondary: #4a4a4a;
-  --c-muted: #6b6b6b;
-  --c-accent: #3d5a80;
-  --c-accent-hover: #2c4a6e;
-  --c-accent-light: #ebf0f7;
-  --c-accent-border: #c5d3e0;
-  --c-strike: #9ba8b5;
+  --c-sidebar: #fff;
+  --c-divider: #e8e8ed;
+  --c-text: #1d1d1f;
+  --c-text-secondary: #424245;
+  --c-muted: #6e6e73;
+  --c-accent: #1963b3;
+  --c-accent-hover: #155293;
+  --c-accent-light: #eef5fc;
+  --c-accent-border: #bcd3eb;
+  --c-strike: #a1a1a6;
   --c-card-bg: #fff;
-  --c-img-bg: #f2f1ee;
-  --c-bullet: #3a3a3a;
-  --c-btn-hover-bg: #f5f8fb;
-  --c-scrollbar-track: #f2f1ee;
-  --c-scrollbar-thumb: #c8c5bf;
+  --c-img-bg: #f5f5f7;
+  --c-bullet: #1d1d1f;
+  --c-btn-hover-bg: #f5f5f7;
+  --c-scrollbar-track: #fff;
+  --c-scrollbar-thumb: #d2d2d7;
 }
 
 .warm {

@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import HomePage from './pages/HomePage';
 import CaseStudyPage from './pages/CaseStudyPage';
 import AppPolicyPage from './pages/AppPolicyPage';
+import AppLandingPage from './pages/AppLandingPage';
 import { caseStudies } from './data/caseStudies';
-import { appPolicyPages } from './data/apps';
+import { appLandingPages, appPolicyPages } from './data/apps';
 
 export default function App({ initialPath }: { initialPath?: string }) {
   const [pathname, setPathname] = useState(
@@ -28,6 +29,12 @@ export default function App({ initialPath }: { initialPath?: string }) {
 
   if (policyPage) {
     return <AppPolicyPage page={policyPage} />;
+  }
+
+  const landingPage = appLandingPages.find((page) => page.path === pathname);
+
+  if (landingPage) {
+    return <AppLandingPage page={landingPage} />;
   }
 
   return <HomePage />;

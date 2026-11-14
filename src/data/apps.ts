@@ -1,5 +1,41 @@
-// Privacy and terms pages for apps I distribute. Add an entry here and the
-// routes, prerendered HTML, and sitemap entries follow from it.
+// Landing, privacy, and terms pages for apps I distribute. Add an entry here
+// and the routes, prerendered HTML, and sitemap entries follow from it.
+
+// Text fields marked "inline" may wrap a key combination in backticks
+// (`⌃⌥⌘R`) and write links as [text](https://example.com).
+export interface AppMenuRow {
+  label?: string;
+  shortcut?: string;
+  submenu?: boolean;
+  checked?: boolean;
+  // A status line the app shows greyed out.
+  info?: boolean;
+  separator?: boolean;
+  // Callout beside the row. `dy` moves its text up or down, in pixels.
+  note?: { text: string; side: 'left' | 'right'; dy?: number };
+}
+
+export interface AppLanding {
+  title: string;
+  headline: string;
+  lede: string;
+  requirements: string;
+  // `text` is inline.
+  features: {
+    icon: 'keyboard' | 'displays' | 'cable';
+    title: string;
+    text: string;
+  }[];
+  menu: AppMenuRow[];
+  // `text` is inline.
+  details: { term: string; text: string }[];
+  icon: string;
+  socialImage: string;
+  download: string;
+  // Pay-what-you-want checkout. The download button goes here when it is set,
+  // and to `download` otherwise.
+  purchaseUrl?: string;
+}
 
 export interface AppPolicy {
   slug: string;
@@ -11,6 +47,7 @@ export interface AppPolicy {
   updated: string;
   privacy: string[];
   terms: string[];
+  landing: AppLanding;
 }
 
 export type PolicyKind = 'privacy' | 'terms';
@@ -50,9 +87,92 @@ export const realign: AppPolicy = {
     'Realign is provided as is, without warranty of any kind. You use it at your own risk, and the author is not liable for any loss or damage that results from using it. The full disclaimer is in the license.',
     'Realign requires macOS 14 or later. It moves and resizes windows that belong to other apps through the macOS Accessibility API, so results depend on how each app responds. Realign is not affiliated with or endorsed by Apple.',
   ],
+  landing: {
+    title: 'Realign: save and restore your Mac window layout',
+    headline: 'Put your windows back where you had them.',
+    lede: 'Realign resets your Mac window positions & sizing back to a saved layout.',
+    requirements: 'Requires macOS 14 or later, on Apple silicon or Intel.',
+    features: [
+      {
+        icon: 'keyboard',
+        title: 'Save and realign',
+        text: 'Arrange your windows, then press `⌃⌥⌘S` to save the layout. Press `⌃⌥⌘R` to realign.',
+      },
+      {
+        icon: 'displays',
+        title: 'A layout for each setup',
+        text: 'Realign keeps one layout for your laptop and one for each set of external monitors.',
+      },
+      {
+        icon: 'cable',
+        title: 'Auto-restore',
+        text: 'Realign can restore your layout by itself when you plug in or unplug a monitor.',
+      },
+    ],
+    menu: [
+      {
+        label: 'Restore Laptop Layout',
+        note: { text: 'Put your windows back', side: 'right', dy: -34 },
+      },
+      { label: 'Restore Multi-Display Layout', shortcut: '⌃⌥⌘R' },
+      {
+        label: 'Save Current Layout',
+        shortcut: '⌃⌥⌘S',
+        note: { text: 'Save your layout', side: 'right', dy: 22 },
+      },
+      { separator: true },
+      {
+        label: 'Restore Shortcut',
+        submenu: true,
+        note: { text: 'Choose which layout the shortcut applies', side: 'left', dy: -30 },
+      },
+      { separator: true },
+      { label: 'Laptop layout: saved Nov 12 at 9:41 AM', info: true },
+      {
+        label: 'Connected displays (1 external): saved Nov 12 at 9:44 AM',
+        info: true,
+      },
+      {
+        label: 'Auto-Restore on Display Change',
+        checked: true,
+        note: {
+          text: 'Restore when you plug in or unplug a monitor',
+          side: 'left',
+          dy: 26,
+        },
+      },
+      { label: 'Launch at Login' },
+      { separator: true },
+      { label: 'Quit Realign', shortcut: '⌘Q' },
+    ],
+    details: [
+      {
+        term: 'Privacy',
+        text: 'Realign stores layouts in one file on your Mac. It makes no network requests and has no accounts or analytics.',
+      },
+      {
+        term: 'Permission',
+        text: 'On first launch, macOS asks for Accessibility access, which Realign needs to move windows.',
+      },
+    ],
+    icon: '/assets/realign-icon.svg',
+    socialImage: '/assets/realign-social.png',
+    download: 'https://github.com/hunterphillips/realign/releases/latest',
+    purchaseUrl: 'https://hkphillips.gumroad.com/l/realign',
+  },
 };
 
 export const apps: AppPolicy[] = [realign];
+
+export interface AppLandingPage {
+  app: AppPolicy;
+  path: string;
+}
+
+export const appLandingPages: AppLandingPage[] = apps.map((app) => ({
+  app,
+  path: `/apps/${app.slug}`,
+}));
 
 export const appPolicyPages: AppPolicyPage[] = apps.flatMap((app) =>
   (['privacy', 'terms'] as const).map((kind) => ({

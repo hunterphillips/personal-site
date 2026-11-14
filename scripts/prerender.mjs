@@ -137,6 +137,41 @@ function appPolicyMetadata(page) {
   });
 }
 
+function appLandingMetadata(page) {
+  const { app } = page;
+  const { landing } = app;
+  const canonical = `${siteUrl}${page.path}`;
+  const image = new URL(landing.socialImage, siteUrl).href;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: landing.lede,
+    url: canonical,
+    image,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: app.minimumOs,
+    downloadUrl: landing.download,
+    license: app.license.url,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    author: {
+      '@type': 'Person',
+      name: 'Hunter Phillips',
+      url: `${siteUrl}/`,
+    },
+  };
+
+  return routeMetadata({
+    title: landing.title,
+    description: landing.lede,
+    socialDescription: landing.headline,
+    canonical,
+    image,
+    type: 'website',
+    jsonLd,
+  });
+}
+
 function routeMetadata({
   title,
   description,
@@ -299,10 +334,11 @@ function renderSkillsIndex(skillSource) {
   )}\n`;
 }
 
-function renderSitemap(caseStudies, appPolicyPages) {
+function renderSitemap(caseStudies, appLandingPages, appPolicyPages) {
   const urls = [
     `${siteUrl}/`,
     ...caseStudies.map(({ path }) => `${siteUrl}${path}`),
+    ...appLandingPages.map(({ path }) => `${siteUrl}${path}`),
     ...appPolicyPages.map(({ path }) => `${siteUrl}${path}`),
   ];
   const entries = urls
@@ -318,7 +354,8 @@ ${entries}
 
 async function main() {
   try {
-    const { appPolicyPages, caseStudies, projects, render } = await import(
+    const { appLandingPages, appPolicyPages, caseStudies, projects, render } =
+      await import(
       pathToFileURL(entryPath).href
     );
     const template = await readFile(resolve(distDir, 'index.html'), 'utf8');
@@ -327,6 +364,10 @@ async function main() {
       ...caseStudies.map((caseStudy) => ({
         path: caseStudy.path,
         metadata: caseStudyMetadata(caseStudy),
+      })),
+      ...appLandingPages.map((page) => ({
+        path: page.path,
+        metadata: appLandingMetadata(page),
       })),
       ...appPolicyPages.map((page) => ({
         path: page.path,
@@ -361,7 +402,7 @@ async function main() {
     );
     await writeFile(
       resolve(distDir, 'sitemap.xml'),
-      renderSitemap(caseStudies, appPolicyPages),
+      renderSitemap(caseStudies, appLandingPages, appPolicyPages),
     );
 
     const skillSource = await readFile(

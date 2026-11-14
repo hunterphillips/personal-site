@@ -5,7 +5,7 @@ import { ThemeProvider } from './ThemeContext';
 
 export { caseStudies } from './data/caseStudies';
 export { projects } from './data/projects';
-export { appPolicyPages } from './data/apps';
+export { appLandingPages, appPolicyPages } from './data/apps';
 
 export function render(url: string) {
   return renderToString(

@@ -1,0 +1,445 @@
+/* Styles for the app landing pages (/apps/<slug>). Everything is scoped under
+   .al so nothing leaks into the portfolio. Colors come from the site's --c-*
+   theme tokens; the demo artwork uses the app's own palette. */
+
+@property --x { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --y { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --w { syntax: '<number>'; inherits: false; initial-value: 0; }
+@property --h { syntax: '<number>'; inherits: false; initial-value: 0; }
+
+.al {
+  --font-mac: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+  --content: 1056px;
+  --gutter: 32px;
+  --edge: max(var(--gutter), calc((100% - var(--content)) / 2));
+
+  /* The page keeps the default palette whatever site theme is active, so the
+     buttons match the app's blue and violet artwork. */
+  --c-bg: #fff; --c-divider: #e8e8ed; --c-text: #1d1d1f; --c-text-secondary: #424245;
+  --c-muted: #6e6e73; --c-accent: #1963b3; --c-accent-hover: #155293;
+  --c-accent-light: #eef5fc; --c-accent-border: #bcd3eb; --c-img-bg: #f5f5f7;
+
+  min-height: 100vh;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 17px;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  a { color: var(--c-accent); text-underline-offset: 3px; }
+  a:hover { color: var(--c-accent-hover); }
+  :focus-visible { outline: 3px solid var(--c-accent); outline-offset: 3px; }
+
+  .al-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .al-wrap { padding-inline: var(--edge); }
+
+  /* ── buttons ── */
+  .al-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 50px; padding: 0 24px; border-radius: 12px;
+    font-size: 16px; font-weight: 600; line-height: 1; text-decoration: none;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .al-btn-primary { background: var(--c-accent); color: #fff; border: 1px solid var(--c-accent); }
+  .al-btn-primary:hover { background: var(--c-accent-hover); border-color: var(--c-accent-hover); color: #fff; }
+  .al-btn-secondary { background: var(--c-bg); color: var(--c-accent); border: 1px solid var(--c-accent-border); }
+  .al-btn-secondary:hover { background: var(--c-accent-light); color: var(--c-accent-hover); }
+  .al-req { margin-top: 14px; font-size: 14px; color: var(--c-muted); }
+
+  /* ── hero ── */
+  .al-hero {
+    display: grid; grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+    gap: 56px; align-items: center;
+    padding: 64px 0 80px var(--edge);
+  }
+  .al-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; font-size: 21px; font-weight: 700; letter-spacing: -0.01em; }
+  .al-brand img { width: 44px; height: 44px; display: block; }
+  .al-hero h1 { font-size: clamp(34px, 4vw, 50px); line-height: 1.08; font-weight: 700; letter-spacing: -0.035em; text-wrap: balance; margin-bottom: 20px; }
+  .al-lede { font-size: 19px; line-height: 1.55; color: var(--c-text-secondary); margin-bottom: 30px; }
+
+  /* The demo panel runs off the right edge of the page. */
+  .al-stage { position: relative; background: var(--c-img-bg); border-radius: 28px 0 0 28px; padding: 28px 48px 28px 32px; }
+  .al-stage-inner { max-width: 720px; }
+  .al-pause {
+    position: absolute; left: 14px; top: 14px; width: 44px; height: 44px;
+    display: grid; place-items: center; padding: 0; border: 0; border-radius: 50%;
+    background: rgba(0, 0, 0, 0.06); color: var(--c-muted); cursor: pointer;
+  }
+  .al-pause:hover { color: var(--c-text); background: rgba(0, 0, 0, 0.1); }
+  .al-pause svg { width: 14px; height: 14px; }
+
+  /* ── keycaps in text ── */
+  .al-combo { white-space: nowrap; display: inline-flex; gap: 0.14em; vertical-align: 0.08em; }
+  kbd {
+    display: inline-grid; place-items: center;
+    min-width: 1.5em; height: 1.5em; padding: 0 0.3em;
+    border: 1px solid #d2d2d7; border-bottom-width: 3px; border-radius: 0.28em;
+    background: #fff; color: #1d1d1f;
+    font: 500 0.72em/1 var(--font-mac);
+  }
+
+  /* ── how to use ── */
+  .al-features {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px;
+    padding-top: 72px; padding-bottom: 72px; border-top: 1px solid var(--c-divider);
+  }
+  .al-feature h3 { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .al-feature h3 svg { flex: none; width: 20px; height: 20px; color: #6d6ff5; }
+  .al-feature p { font-size: 16px; line-height: 1.65; color: var(--c-text-secondary); }
+  .al-feature kbd { font-size: 0.8em; }
+
+  /* ── the menu, with callouts ── */
+  .al-section { padding-bottom: 88px; }
+  .al-section > h2 { margin-bottom: 28px; font-size: 26px; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
+  .al-menu-stage { --row: 26px; padding: 36px 0 44px; }
+  .al-menu {
+    position: relative; width: 420px; margin: 0 auto; padding: 5px; list-style: none;
+    background: #fbfbfd; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 11px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 14px 36px rgba(0, 0, 0, 0.13);
+    font: 400 14px/var(--row) var(--font-mac); color: #1d1d1f;
+  }
+  .al-menu li { position: relative; }
+  .al-mi { display: flex; justify-content: space-between; gap: 16px; height: var(--row); padding: 0 12px 0 24px; white-space: nowrap; }
+  .al-mi .al-sc { color: #6e6e73; letter-spacing: 0.06em; }
+  .al-mi .al-check { position: absolute; left: 8px; }
+  .al-mi.al-off { color: #6e6e73; }
+  .al-sep { height: 1px; margin: 5px 12px; background: rgba(0, 0, 0, 0.12); }
+
+  /* A callout hangs off its menu row: a dotted leader, then the text, which
+     sits --dy above or below the row so the callouts don't line up in a column. */
+  .al-note {
+    position: absolute; top: 0; width: 310px; height: var(--row);
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-style: italic; font-weight: 400; line-height: 1.3;
+    color: var(--c-muted); white-space: normal;
+  }
+  .al-note.al-r { left: calc(100% + 10px); }
+  .al-note.al-l { right: calc(100% + 10px); }
+  .al-leader { position: absolute; top: calc(var(--row) / 2); width: 64px; height: 1px; overflow: visible; }
+  .al-leader path { fill: none; stroke: #a1a1a8; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 0.1 5; }
+  .al-r .al-leader { left: 0; }
+  .al-l .al-leader { right: 0; }
+  .al-note span { position: absolute; top: calc(var(--row) / 2 + var(--dy, 0px)); transform: translateY(-50%); }
+  .al-note.al-r span { left: 74px; right: 0; }
+  .al-note.al-l span { right: 74px; left: 0; text-align: right; }
+
+  /* ── details ── */
+  .al-facts { border-top: 1px solid var(--c-divider); }
+  .al-facts div { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding: 22px 0; border-bottom: 1px solid var(--c-divider); }
+  .al-facts dt { font-weight: 600; }
+  .al-facts dd { color: var(--c-text-secondary); max-width: 620px; }
+
+  /* ── get ── */
+  .al-get-sec { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; padding-bottom: 88px; }
+
+  /* ── footer ── */
+  footer {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px;
+    padding-top: 28px; padding-bottom: 40px; border-top: 1px solid var(--c-divider);
+    font-size: 14px; color: var(--c-muted);
+  }
+  footer ul { display: flex; flex-wrap: wrap; gap: 0 24px; list-style: none; }
+  footer a { color: var(--c-muted); display: inline-block; padding: 10px 0; }
+  footer a:hover { color: var(--c-text); }
+
+  /* ── narrower screens ── */
+  @media (max-width: 1100px) {
+    .al-hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-right: var(--edge); }
+    .al-hero-text { max-width: 560px; }
+    .al-stage { border-radius: 28px; padding: 28px 28px 36px; }
+    .al-stage-inner { margin: 0 auto; }
+    /* notes sit inside the menu, under the rows they describe */
+    .al-note.al-l, .al-note.al-r {
+      position: static; display: block; width: auto; height: auto;
+      margin: 2px 12px 8px 24px; padding: 0 0 0 10px;
+      border-left: 2px solid var(--c-accent);
+      font-size: 13.5px; font-style: normal; font-weight: 500; line-height: 1.45; color: var(--c-text-secondary);
+    }
+    .al-leader { display: none; }
+    .al-note.al-l span, .al-note.al-r span { position: static; transform: none; text-align: left; }
+    .al-menu-stage { padding: 0 0 8px; }
+  }
+
+  @media (max-width: 640px) {
+    --gutter: 16px;
+    font-size: 16px;
+    .al-hero { padding-top: 36px; padding-bottom: 48px; gap: 32px; }
+    .al-lede { font-size: 18px; margin-bottom: 24px; }
+    .al-btn { width: 100%; }
+    .al-stage { margin-inline: calc(-1 * var(--gutter)); border-radius: 0; padding: 44px 8px 12px; }
+    .al-pause { left: 8px; top: 8px; }
+    .al-features { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-top: 48px; padding-bottom: 48px; }
+    .al-section { padding-bottom: 56px; }
+    .al-menu { width: auto; font-size: 13px; }
+    .al-mi { padding-right: 10px; }
+    .al-mi.al-off { white-space: normal; height: auto; line-height: 1.4; padding-block: 4px; }
+    .al-facts div { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 18px 0; }
+    .al-get-sec { padding-bottom: 56px; }
+    footer { flex-direction: column; }
+  }
+}
+
+/* ─── Realign demo loop ───
+   A 640×384 scene laid out in stage units (--u). Windows, the laptop and its
+   base are positioned by --x/--y/--w/--h, which the keyframes animate.
+
+   Timeline (14s). The keyframes are generated by
+   scripts/realign-demo-keyframes.mjs; change layouts and times there:
+   0     the saved layout on the laptop
+   1.0   ⌃⌥⌘S is pressed, the menu bar icon pings
+   2.2   a cursor drags two windows out of place
+   4.5   ⌃⌥⌘R is pressed and the windows go back
+   6.3   the view widens to show a monitor, its cable hanging loose
+   7.4   the cable is plugged in and the monitor lights
+   8.7   the windows move to the layout saved for both displays
+   11.4  the cable is pulled out and the monitor goes dark
+   11.9  the windows return to the laptop layout
+   13.0  the view closes in on the laptop again */
+.rd {
+  --u: calc(100cqw / 640);
+  --d: 14s;
+  --play: running;
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 640 / 384;
+  overflow: hidden;
+  contain: layout paint;
+}
+.rd * { position: absolute; }
+.rd .rd-a {
+  animation-duration: var(--d);
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-play-state: var(--play);
+  animation-delay: calc(var(--t, 0s) * -1);
+}
+.rd-box {
+  left: calc(var(--u) * var(--x)); top: calc(var(--u) * var(--y));
+  width: calc(var(--u) * var(--w)); height: calc(var(--u) * var(--h));
+}
+.rd-screen { border-radius: calc(var(--u) * 7); background: linear-gradient(165deg, #5f7dfb, #8b5ff6); }
+.rd-external { inset: 0; animation-name: rd-external; }
+.rd-monitor { left: calc(var(--u) * 14); top: calc(var(--u) * 46); width: calc(var(--u) * 324); height: calc(var(--u) * 203); border-radius: calc(var(--u) * 7); background: #2c2c30; }
+.rd-lit { inset: 0; animation-name: rd-lit; }
+.rd-neck { left: calc(var(--u) * 166); top: calc(var(--u) * 249); width: calc(var(--u) * 20); height: calc(var(--u) * 28); background: #cfcfd5; }
+.rd-foot { left: calc(var(--u) * 126); top: calc(var(--u) * 277); width: calc(var(--u) * 100); height: calc(var(--u) * 8); border-radius: calc(var(--u) * 4); background: #cfcfd5; }
+.rd-cable { inset: 0; width: 100%; height: 100%; transform-origin: 35.3% 73.4%; animation-name: rd-cable; }
+.rd-laptop { animation-name: rd-laptop; }
+.rd-deck { border-radius: calc(var(--u) * 2) calc(var(--u) * 2) calc(var(--u) * 5) calc(var(--u) * 5); background: #cfcfd5; animation-name: rd-deck; }
+.rd-menubar { left: 0; top: 0; right: 0; height: calc(var(--u) * 8); background: rgba(255, 255, 255, 0.28); border-radius: calc(var(--u) * 7) calc(var(--u) * 7) 0 0; }
+.rd-mb-icon { right: calc(var(--u) * 10); top: calc(var(--u) * 1.5); width: calc(var(--u) * 7); height: calc(var(--u) * 5); border-radius: calc(var(--u) * 1.2); border: calc(var(--u) * 1) solid #fff; }
+.rd-mb-icon::after { content: ''; position: absolute; left: 34%; top: 0; bottom: 0; width: calc(var(--u) * 1); background: #fff; }
+.rd-ping { right: calc(var(--u) * 0.5); top: calc(var(--u) * -9); width: calc(var(--u) * 26); height: calc(var(--u) * 26); border-radius: 50%; border: calc(var(--u) * 2) solid #fff; opacity: 0; animation-name: rd-ping; }
+
+.rd-win { border-radius: calc(var(--u) * 5); overflow: hidden; box-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 8) rgba(20, 20, 60, 0.22); }
+.rd-bar { left: 0; top: 0; right: 0; height: calc(var(--u) * 11); }
+.rd-dots { left: calc(var(--u) * 5); top: calc(var(--u) * 3.5); width: calc(var(--u) * 4); height: calc(var(--u) * 4); border-radius: 50%; background: #ff5f57; box-shadow: calc(var(--u) * 6.5) 0 #febc2e, calc(var(--u) * 13) 0 #28c840; }
+.rd-ln { left: calc(var(--u) * 8); height: calc(var(--u) * 3.4); border-radius: calc(var(--u) * 2); }
+.rd-ln:nth-of-type(3) { top: calc(var(--u) * 19); width: 46%; }
+.rd-ln:nth-of-type(4) { top: calc(var(--u) * 28); width: 68%; }
+.rd-ln:nth-of-type(5) { top: calc(var(--u) * 37); width: 54%; }
+.rd-ln:nth-of-type(6) { top: calc(var(--u) * 46); width: 62%; }
+.rd-ln:nth-of-type(7) { top: calc(var(--u) * 55); width: 38%; }
+.rd-browser { background: #f8f9fb; animation-name: rd-browser; }
+.rd-browser .rd-bar { background: #e8eaef; }
+.rd-browser .rd-ln { background: #e3e5ea; }
+.rd-editor { background: #2b3a5c; animation-name: rd-editor; }
+.rd-editor .rd-bar { background: #22304e; }
+.rd-editor .rd-ln { background: #48628f; }
+.rd-editor .rd-ln:nth-of-type(3), .rd-editor .rd-ln:nth-of-type(7) { background: #5a76b0; }
+.rd-term { background: #23252f; animation-name: rd-term; }
+.rd-term .rd-bar { background: #1a1c24; }
+.rd-term .rd-ln { background: #4d5163; }
+.rd-term .rd-ln:nth-of-type(3) { background: #7ddb84; }
+.rd-notes { background: #b79df0; animation-name: rd-notes; }
+.rd-notes .rd-bar { background: #a488e3; }
+.rd-notes .rd-ln { background: #d8c9f7; }
+.rd-notes .rd-ln:nth-of-type(3) { background: #efe9fb; }
+
+.rd-keys { left: 0; right: 0; top: calc(var(--u) * 316); height: calc(var(--u) * 48); display: flex; justify-content: center; gap: calc(var(--u) * 8); animation-name: rd-keys; }
+.rd-cursor { left: calc(var(--u) * var(--x)); top: calc(var(--u) * var(--y)); width: calc(var(--u) * 19); height: calc(var(--u) * 19); opacity: 0; animation-name: rd-cursor; }
+.rd .rd-key {
+  position: relative; width: calc(var(--u) * 46); height: calc(var(--u) * 44);
+  border-radius: calc(var(--u) * 8); background: #fff; border: calc(var(--u) * 1) solid #d8d8de;
+  box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de;
+  display: grid; place-items: center;
+  font: 600 calc(var(--u) * 20) / 1 -apple-system, system-ui, sans-serif; color: #3a3a3c;
+  animation-name: rd-key;
+}
+.rd .rd-key span { position: static; }
+.rd .rd-key .rd-alt { position: absolute; inset: 0; display: grid; place-items: center; animation-duration: var(--d); animation-iteration-count: infinite; animation-play-state: var(--play); animation-delay: calc(var(--t, 0s) * -1); animation-timing-function: linear; }
+.rd .rd-key .rd-alt-s { animation-name: rd-key-s; }
+.rd .rd-key .rd-alt-r { animation-name: rd-key-r; opacity: 0; }
+.rd .rd-key:nth-child(2) { animation-delay: calc(var(--t, 0s) * -1 + 0.04s); }
+.rd .rd-key:nth-child(3) { animation-delay: calc(var(--t, 0s) * -1 + 0.08s); }
+.rd .rd-key:nth-child(4) { animation-delay: calc(var(--t, 0s) * -1 + 0.12s); }
+
+/* rd-keyframes:start (generated by scripts/realign-demo-keyframes.mjs) */
+@keyframes rd-editor {
+  0% { --x: 244; --y: 52; --w: 150; --h: 226; }
+  45% { --x: 244; --y: 52; --w: 150; --h: 226; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 439.5; --y: 131; --w: 93.8; --h: 141.3; }
+  62.14% { --x: 439.5; --y: 131; --w: 93.8; --h: 141.3; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  67.14% { --x: 179; --y: 60; --w: 151; --h: 181; }
+  85% { --x: 179; --y: 60; --w: 151; --h: 181; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  90% { --x: 439.5; --y: 131; --w: 93.8; --h: 141.3; }
+  92.86% { --x: 439.5; --y: 131; --w: 93.8; --h: 141.3; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 244; --y: 52; --w: 150; --h: 226; }
+  100% { --x: 244; --y: 52; --w: 150; --h: 226; }
+}
+@keyframes rd-term {
+  0% { --x: 128; --y: 52; --w: 110; --h: 110; }
+  45% { --x: 128; --y: 52; --w: 110; --h: 110; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 367; --y: 131; --w: 68.8; --h: 68.8; }
+  62.5% { --x: 367; --y: 131; --w: 68.8; --h: 68.8; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  67.5% { --x: 368; --y: 133; --w: 116; --h: 138; }
+  85.36% { --x: 368; --y: 133; --w: 116; --h: 138; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  90.36% { --x: 367; --y: 131; --w: 68.8; --h: 68.8; }
+  92.86% { --x: 367; --y: 131; --w: 68.8; --h: 68.8; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 128; --y: 52; --w: 110; --h: 110; }
+  100% { --x: 128; --y: 52; --w: 110; --h: 110; }
+}
+@keyframes rd-browser {
+  0% { --x: 400; --y: 52; --w: 112; --h: 226; }
+  15.71% { --x: 400; --y: 52; --w: 112; --h: 226; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  20.71% { --x: 306; --y: 56; --w: 112; --h: 226; }
+  34.29% { --x: 306; --y: 56; --w: 112; --h: 226; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  38.57% { --x: 400; --y: 52; --w: 112; --h: 226; }
+  45% { --x: 400; --y: 52; --w: 112; --h: 226; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 537; --y: 131; --w: 70; --h: 141.3; }
+  62.86% { --x: 537; --y: 131; --w: 70; --h: 141.3; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  67.86% { --x: 22; --y: 60; --w: 151; --h: 181; }
+  85.71% { --x: 22; --y: 60; --w: 151; --h: 181; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  90.71% { --x: 537; --y: 131; --w: 70; --h: 141.3; }
+  92.86% { --x: 537; --y: 131; --w: 70; --h: 141.3; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 400; --y: 52; --w: 112; --h: 226; }
+  100% { --x: 400; --y: 52; --w: 112; --h: 226; }
+}
+@keyframes rd-notes {
+  0% { --x: 128; --y: 168; --w: 110; --h: 110; }
+  21.43% { --x: 128; --y: 168; --w: 110; --h: 110; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  26.43% { --x: 196; --y: 118; --w: 110; --h: 110; }
+  34.64% { --x: 196; --y: 118; --w: 110; --h: 110; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  38.93% { --x: 128; --y: 168; --w: 110; --h: 110; }
+  45% { --x: 128; --y: 168; --w: 110; --h: 110; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 367; --y: 203.5; --w: 68.8; --h: 68.8; }
+  63.21% { --x: 367; --y: 203.5; --w: 68.8; --h: 68.8; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  68.21% { --x: 490; --y: 133; --w: 116; --h: 138; }
+  86.07% { --x: 490; --y: 133; --w: 116; --h: 138; animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  91.07% { --x: 367; --y: 203.5; --w: 68.8; --h: 68.8; }
+  92.86% { --x: 367; --y: 203.5; --w: 68.8; --h: 68.8; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 128; --y: 168; --w: 110; --h: 110; }
+  100% { --x: 128; --y: 168; --w: 110; --h: 110; }
+}
+@keyframes rd-laptop {
+  0% { --x: 120; --y: 36; --w: 400; --h: 250; }
+  45% { --x: 120; --y: 36; --w: 400; --h: 250; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 362; --y: 121; --w: 250; --h: 156; }
+  92.86% { --x: 362; --y: 121; --w: 250; --h: 156; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 120; --y: 36; --w: 400; --h: 250; }
+  100% { --x: 120; --y: 36; --w: 400; --h: 250; }
+}
+@keyframes rd-deck {
+  0% { --x: 92; --y: 286; --w: 456; --h: 10; }
+  45% { --x: 92; --y: 286; --w: 456; --h: 10; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { --x: 344; --y: 277; --w: 286; --h: 8; }
+  92.86% { --x: 344; --y: 277; --w: 286; --h: 8; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { --x: 92; --y: 286; --w: 456; --h: 10; }
+  100% { --x: 92; --y: 286; --w: 456; --h: 10; }
+}
+@keyframes rd-external {
+  0% { opacity: 0; transform: translateX(calc(var(--u) * -60)); }
+  45% { opacity: 0; transform: translateX(calc(var(--u) * -60)); animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  50% { opacity: 1; transform: none; }
+  92.86% { opacity: 1; transform: none; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  98.57% { opacity: 0; transform: translateX(calc(var(--u) * -60)); }
+  100% { opacity: 0; transform: translateX(calc(var(--u) * -60)); }
+}
+@keyframes rd-cable {
+  0% { transform: rotate(9deg); }
+  52.86% { transform: rotate(9deg); animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  55% { transform: none; }
+  81.43% { transform: none; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  83.57% { transform: rotate(9deg); }
+  100% { transform: rotate(9deg); }
+}
+@keyframes rd-lit {
+  0% { opacity: 0; }
+  55% { opacity: 0; animation-timing-function: linear; }
+  57.14% { opacity: 1; }
+  83.57% { opacity: 1; animation-timing-function: linear; }
+  85% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes rd-keys {
+  0% { opacity: 1; }
+  14.29% { opacity: 1; animation-timing-function: linear; }
+  16.43% { opacity: 0; }
+  27.86% { opacity: 0; animation-timing-function: linear; }
+  30% { opacity: 1; }
+  40.71% { opacity: 1; animation-timing-function: linear; }
+  42.86% { opacity: 0; }
+  97.86% { opacity: 0; animation-timing-function: linear; }
+  100% { opacity: 1; }
+}
+@keyframes rd-key-s {
+  0% { opacity: 1; }
+  16.43% { opacity: 1; }
+  16.5% { opacity: 0; }
+  97.14% { opacity: 0; }
+  97.21% { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes rd-key-r {
+  0% { opacity: 0; }
+  16.43% { opacity: 0; }
+  16.5% { opacity: 1; }
+  97.14% { opacity: 1; }
+  97.21% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes rd-key {
+  0% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; }
+  7.14% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; animation-timing-function: linear; }
+  7.71% { transform: translateY(calc(var(--u) * 3)); box-shadow: 0 0 0 #5f7dfb; background: #e3e9ff; color: #2a3aa8; border-color: #5f7dfb; }
+  11.43% { transform: translateY(calc(var(--u) * 3)); box-shadow: 0 0 0 #5f7dfb; background: #e3e9ff; color: #2a3aa8; border-color: #5f7dfb; animation-timing-function: linear; }
+  12.5% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; }
+  32.14% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; animation-timing-function: linear; }
+  32.71% { transform: translateY(calc(var(--u) * 3)); box-shadow: 0 0 0 #5f7dfb; background: #e3e9ff; color: #2a3aa8; border-color: #5f7dfb; }
+  36.43% { transform: translateY(calc(var(--u) * 3)); box-shadow: 0 0 0 #5f7dfb; background: #e3e9ff; color: #2a3aa8; border-color: #5f7dfb; animation-timing-function: linear; }
+  37.5% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; }
+  100% { transform: none; box-shadow: 0 calc(var(--u) * 3) 0 #d8d8de; background: #fff; color: #3a3a3c; border-color: #d8d8de; }
+}
+@keyframes rd-ping {
+  0% { opacity: 0; transform: scale(0.3); }
+  8.21% { opacity: 0; transform: scale(0.3); }
+  8.29% { opacity: 0.95; transform: scale(0.3); animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  13.21% { opacity: 0; transform: scale(1.6); }
+  33.21% { opacity: 0; transform: scale(0.3); }
+  33.29% { opacity: 0.95; transform: scale(0.3); animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  38.21% { opacity: 0; transform: scale(1.6); }
+  58.57% { opacity: 0; transform: scale(0.3); }
+  58.64% { opacity: 0.95; transform: scale(0.3); animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  63.57% { opacity: 0; transform: scale(1.6); }
+  84.29% { opacity: 0; transform: scale(0.3); }
+  84.36% { opacity: 0.95; transform: scale(0.3); animation-timing-function: cubic-bezier(0.3, 0.7, 0.2, 1); }
+  89.29% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+@keyframes rd-cursor {
+  0% { --x: 330; --y: 170; opacity: 0; }
+  13.57% { --x: 330; --y: 170; opacity: 0; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  15.71% { --x: 450; --y: 57; opacity: 1; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  20.71% { --x: 356; --y: 61; opacity: 1; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  21.43% { --x: 172; --y: 173; opacity: 1; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  26.43% { --x: 240; --y: 123; opacity: 1; animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1); }
+  28.57% { --x: 430; --y: 150; opacity: 0; }
+  100% { --x: 430; --y: 150; opacity: 0; }
+}
+/* rd-keyframes:end */
+
+/* Reduced motion: hold the frame where both displays show their layout. */
+@media (prefers-reduced-motion: reduce) {
+  .rd { --t: 10.5s; --play: paused; }
+  .al .al-pause { display: none; }
+}

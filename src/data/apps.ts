@@ -19,6 +19,8 @@ export interface AppLanding {
   title: string;
   headline: string;
   lede: string;
+  // Meta description and structured-data description, for search results.
+  description: string;
   requirements: string;
   // `text` is inline.
   features: {
@@ -35,6 +37,8 @@ export interface AppLanding {
   // Pay-what-you-want checkout. The download button goes here when it is set,
   // and to `download` otherwise.
   purchaseUrl?: string;
+  // Homebrew install command, listed in the markdown version of the page.
+  brew?: string;
 }
 
 export interface AppPolicy {
@@ -91,6 +95,8 @@ export const realign: AppPolicy = {
     title: 'Realign: save and restore your Mac window layout',
     headline: 'Put your windows back where you had them.',
     lede: 'Realign resets your Mac window positions & sizing back to a saved layout.',
+    description:
+      'A macOS menu bar app that saves your window layout and restores it with a keyboard shortcut, or by itself when you plug in or unplug a monitor.',
     requirements: 'Requires macOS 14 or later, on Apple silicon or Intel.',
     features: [
       {
@@ -124,7 +130,11 @@ export const realign: AppPolicy = {
       {
         label: 'Restore Shortcut',
         submenu: true,
-        note: { text: 'Choose which layout the shortcut applies', side: 'left', dy: -30 },
+        note: {
+          text: 'Choose which layout the shortcut applies',
+          side: 'left',
+          dy: -30,
+        },
       },
       { separator: true },
       { label: 'Laptop layout: saved Nov 12 at 9:41 AM', info: true },
@@ -159,6 +169,7 @@ export const realign: AppPolicy = {
     socialImage: '/assets/realign-social.png',
     download: 'https://github.com/hunterphillips/realign/releases/latest',
     purchaseUrl: 'https://hkphillips.gumroad.com/l/realign',
+    brew: 'brew install hunterphillips/tap/realign',
   },
 };
 

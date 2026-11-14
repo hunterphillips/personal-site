@@ -24,6 +24,18 @@
       ],
       "destination": "/case-studies/:slug.md",
       "permanent": false
+    },
+    {
+      "source": "/apps/:slug((?!.*\\.md$)[^/]+)",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": { "re": ".*text/markdown.*" }
+        }
+      ],
+      "destination": "/apps/:slug.md",
+      "permanent": false
     }
   ],
   "headers": [

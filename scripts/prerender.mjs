@@ -146,14 +146,20 @@ function appLandingMetadata(page) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: app.name,
-    description: landing.lede,
+    description: landing.description,
     url: canonical,
     image,
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: app.minimumOs,
     downloadUrl: landing.download,
     license: app.license.url,
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    sameAs: [app.repo],
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      url: landing.download,
+    },
     author: {
       '@type': 'Person',
       name: 'Hunter Phillips',
@@ -163,11 +169,12 @@ function appLandingMetadata(page) {
 
   return routeMetadata({
     title: landing.title,
-    description: landing.lede,
+    description: landing.description,
     socialDescription: landing.headline,
     canonical,
     image,
     type: 'website',
+    markdownHref: `${page.path}.md`,
     jsonLd,
   });
 }
@@ -263,13 +270,61 @@ function renderCaseStudyMarkdown(caseStudy) {
   return `${lines.join('\n').trim()}\n`;
 }
 
-function renderLlmsTxt(projects, caseStudies) {
+function renderAppMarkdown(page, policyPages) {
+  const { app } = page;
+  const { landing } = app;
+  const commands = landing.menu.filter((row) => row.label && !row.info);
+  const lines = [
+    `# ${app.name}`,
+    '',
+    landing.description,
+    '',
+    '## What it does',
+    '',
+    ...landing.features.map((feature) => `- **${feature.title}:** ${feature.text}`),
+    '',
+    '## Menu bar commands',
+    '',
+    ...commands.map(
+      (row) => `- ${row.label}${row.shortcut ? ` (\`${row.shortcut}\`)` : ''}`,
+    ),
+    '',
+    '## Requirements',
+    '',
+    landing.requirements,
+    '',
+    '## Get it',
+    '',
+    ...(landing.purchaseUrl
+      ? [`- [Gumroad](${landing.purchaseUrl}): pay what you want`]
+      : []),
+    `- [Latest release](${landing.download})`,
+    ...(landing.brew ? [`- Homebrew: \`${landing.brew}\``] : []),
+    '',
+    '## Details',
+    '',
+    ...landing.details.map((detail) => `- **${detail.term}:** ${detail.text}`),
+    '',
+    '## Links',
+    '',
+    `- [Product page](${siteUrl}${page.path})`,
+    `- [Source code](${app.repo})`,
+    `- [${app.license.name}](${app.license.url})`,
+    ...policyPages
+      .filter((policy) => policy.app.slug === app.slug)
+      .map((policy) => `- [${policy.heading}](${siteUrl}${policy.path})`),
+  ];
+
+  return `${lines.join('\n')}\n`;
+}
+
+function renderLlmsTxt(projects, caseStudies, appLandingPages) {
   const lines = [
     '# Hunter Phillips',
     '',
     '> Personal portfolio of Hunter Phillips, an AI Architect specializing in agent-native systems, developer tooling, and platform modernization for federal and commercial organizations.',
     '',
-    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. Sending `Accept: text/markdown` to `/` or to any case-study URL redirects to the markdown for that page. No contact form or email address is published in the HTML or markdown — the intended channels are [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) and [GitHub](https://github.com/hunterphillips).',
+    'This site is a prerendered single-page portfolio. All substantive content is also available as plain markdown at the URLs below; prefer those over parsing the HTML. Sending `Accept: text/markdown` to `/`, to any case-study URL, or to any app page redirects to the markdown for that page. No contact form or email address is published in the HTML or markdown — the intended channels are [LinkedIn](https://www.linkedin.com/in/hunter-phillips/) and [GitHub](https://github.com/hunterphillips).',
     '',
     '## Profile',
     '',
@@ -282,7 +337,7 @@ function renderLlmsTxt(projects, caseStudies) {
     '',
     ...projects.map(
       (project) =>
-        `- [${project.name}](${project.github ?? `${siteUrl}${project.caseStudyPath}`}): ${project.shortDescription}`,
+        `- [${project.name}](${project.appPath ? `${siteUrl}${project.appPath}` : (project.github ?? `${siteUrl}${project.caseStudyPath}`)}): ${project.shortDescription}`,
     ),
     '',
     '## Case Studies',
@@ -290,6 +345,13 @@ function renderLlmsTxt(projects, caseStudies) {
     ...caseStudies.map(
       (caseStudy) =>
         `- [${caseStudy.title}](/case-studies/${caseStudy.slug}.md): ${caseStudy.summary} HTML version at ${caseStudy.path}`,
+    ),
+    '',
+    '## Apps',
+    '',
+    ...appLandingPages.map(
+      ({ app, path }) =>
+        `- [${app.name}](${path}.md): ${app.landing.description} HTML version at ${path}`,
     ),
     '',
     '## Agents',
@@ -396,9 +458,16 @@ async function main() {
       );
     }
 
+    for (const page of appLandingPages) {
+      await writeFile(
+        resolve(distDir, `${page.path.slice(1)}.md`),
+        renderAppMarkdown(page, appPolicyPages),
+      );
+    }
+
     await writeFile(
       resolve(distDir, 'llms.txt'),
-      renderLlmsTxt(projects, caseStudies),
+      renderLlmsTxt(projects, caseStudies, appLandingPages),
     );
     await writeFile(
       resolve(distDir, 'sitemap.xml'),

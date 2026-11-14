@@ -20,12 +20,13 @@ smaller, stable, and canonical.
 | Longer prose write-ups of selected projects | `/me/projects.md` |
 | Resume (PDF) | `/me/resume.pdf` |
 | Case study, full detail (metrics, architecture, links) | `/case-studies/<slug>.md` |
+| App product page: what it does, requirements, download links | `/apps/<slug>.md` |
 | All HTML routes | `/sitemap.xml` |
 
 All URLs are relative to `https://hunterphillips.dev`.
 
-Content negotiation also works: send `Accept: text/markdown` to `/` or to any
-case-study URL and you are redirected to that page's markdown, so you do not
+Content negotiation also works: send `Accept: text/markdown` to `/`, to any
+case-study URL, or to any app page and you are redirected to that page's markdown, so you do not
 need to know the table above to get markdown back.
 
 ## Procedure
@@ -47,7 +48,7 @@ need to know the table above to get markdown back.
 - The prerendered home page freezes a JS headline animation mid-cycle (it reads
   "AI collaborator"); the animated words are decorative — don't quote them as a
   job title. The current title is AI Architect at NowGentic.
-- `/llms.txt`, `/sitemap.xml`, and `/case-studies/*.md` are regenerated from the
+- `/llms.txt`, `/sitemap.xml`, `/case-studies/*.md`, and `/apps/*.md` are regenerated from the
   site's source data on every deploy; `/me/*.md` files are hand-maintained and may
   update on a different cadence. If they disagree on a detail, prefer
   `/me/README.md` for career facts.

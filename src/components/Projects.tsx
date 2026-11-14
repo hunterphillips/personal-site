@@ -99,8 +99,10 @@ export default function Projects({ isMobile }: { isMobile?: boolean }) {
                   isMobile={isMobile}
                   onClick={() => {
                     if (i === activeIndex) {
-                      if (project.caseStudyPath) {
-                        navigateTo(project.caseStudyPath);
+                      const pagePath =
+                        project.caseStudyPath ?? project.appPath;
+                      if (pagePath) {
+                        navigateTo(pagePath);
                       } else {
                         setSelected(project);
                       }
@@ -175,6 +177,7 @@ function ProjectCard({
   onClick: () => void;
 }) {
   const [hovered, setHovered] = useState(false);
+  const pagePath = project.caseStudyPath ?? project.appPath;
 
   return (
     <div
@@ -261,19 +264,36 @@ function ProjectCard({
             </span>
           ))}
         </div>
-        {project.caseStudyPath && (
-          <div
+        {pagePath && (
+          // A real link so crawlers and modified clicks can follow it; a plain
+          // click is left to the card, which scrolls or navigates.
+          <a
+            href={pagePath}
+            onClick={(event) => {
+              if (
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey
+              ) {
+                event.stopPropagation();
+              } else {
+                event.preventDefault();
+              }
+            }}
             style={{
+              display: 'block',
               marginTop: '16px',
               fontSize: '11px',
               fontWeight: 700,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
+              textDecoration: 'none',
               color: isActive ? 'var(--c-accent)' : 'var(--c-muted)',
             }}
           >
-            Read case study
-          </div>
+            {project.caseStudyPath ? 'Read case study' : 'View app page'}
+          </a>
         )}
       </div>
     </div>

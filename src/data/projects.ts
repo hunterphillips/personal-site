@@ -8,6 +8,8 @@ export interface Project {
   github?: string;
   link?: string;
   caseStudyPath?: string;
+  // Product page on this site, for apps I distribute.
+  appPath?: string;
 }
 
 export const projects: Project[] = [
@@ -61,6 +63,7 @@ export const projects: Project[] = [
     images: ["/assets/realign.png"],
     tags: ["Swift", "AppKit", "Accessibility API", "macOS", "Homebrew"],
     github: "https://github.com/hunterphillips/realign",
+    appPath: "/apps/realign",
   },
   {
     id: "font-tester",

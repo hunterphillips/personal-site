@@ -151,14 +151,14 @@ function appLandingMetadata(page) {
     image,
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: app.minimumOs,
-    downloadUrl: landing.download,
+    downloadUrl: landing.purchaseUrl ?? landing.download,
     license: app.license.url,
     sameAs: [app.repo],
     offers: {
       '@type': 'Offer',
-      price: '0',
+      price: landing.purchaseUrl ? landing.minimumPrice : '0',
       priceCurrency: 'USD',
-      url: landing.download,
+      url: landing.purchaseUrl ?? landing.download,
     },
     author: {
       '@type': 'Person',
@@ -295,11 +295,9 @@ function renderAppMarkdown(page, policyPages) {
     '',
     '## Get it',
     '',
-    ...(landing.purchaseUrl
-      ? [`- [Gumroad](${landing.purchaseUrl}): pay what you want`]
-      : []),
-    `- [Latest release](${landing.download})`,
-    ...(landing.brew ? [`- Homebrew: \`${landing.brew}\``] : []),
+    landing.purchaseUrl
+      ? `- [Gumroad](${landing.purchaseUrl}): pay what you want`
+      : `- [Latest release](${landing.download})`,
     '',
     '## Details',
     '',

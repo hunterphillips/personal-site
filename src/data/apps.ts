@@ -37,8 +37,9 @@ export interface AppLanding {
   // Pay-what-you-want checkout. The download button goes here when it is set,
   // and to `download` otherwise.
   purchaseUrl?: string;
-  // Homebrew install command, listed in the markdown version of the page.
-  brew?: string;
+  // Lowest price the checkout accepts, in US dollars, for structured data.
+  // Keep it equal to the Gumroad listing's minimum.
+  minimumPrice?: string;
 }
 
 export interface AppPolicy {
@@ -169,7 +170,7 @@ export const realign: AppPolicy = {
     socialImage: '/assets/realign-social.png',
     download: 'https://github.com/hunterphillips/realign/releases/latest',
     purchaseUrl: 'https://hkphillips.gumroad.com/l/realign',
-    brew: 'brew install hunterphillips/tap/realign',
+    minimumPrice: '2.99',
   },
 };
 

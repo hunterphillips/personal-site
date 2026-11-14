@@ -81,14 +81,16 @@ export const realign: AppPolicy = {
     url: 'https://github.com/hunterphillips/realign/blob/main/LICENSE',
   },
   minimumOs: 'macOS 14 or later',
-  updated: '2026-10-12',
+  updated: '2026-11-14',
   privacy: [
     'Realign runs entirely on your Mac. It does not collect, store, or send any personal data, and it makes no network requests. There are no accounts, no analytics, and no crash reporting.',
     'Saved layouts are stored on your Mac in a single file at ~/Library/Application Support/Realign/layouts.json. The file holds the position, size, and title of each saved window, the bundle identifier of the app it belongs to, and an identifier for each display. Nothing in it leaves your Mac. Deleting the file or the app removes it.',
     'On first launch, macOS asks you to grant Realign Accessibility access. Realign uses it to read window positions, sizes, and titles, and to move and resize windows. It does not read the contents of any window.',
+    'If you buy Realign, the purchase goes through Gumroad. Gumroad collects your email address and payment details under its own privacy policy and shares your name and email address with the author.',
   ],
   terms: [
-    'Realign is free, open-source software released under the MIT License. You may use, copy, modify, and distribute it under the terms of that license.',
+    'Realign is open-source software released under the MIT License. You may use, copy, modify, and distribute it under the terms of that license.',
+    'Purchases are processed by Gumroad, which takes the payment, collects any sales tax, and emails the download link. For a question about a purchase or a refund, reply to that email.',
     'Realign is provided as is, without warranty of any kind. You use it at your own risk, and the author is not liable for any loss or damage that results from using it. The full disclaimer is in the license.',
     'Realign requires macOS 14 or later. It moves and resizes windows that belong to other apps through the macOS Accessibility API, so results depend on how each app responds. Realign is not affiliated with or endorsed by Apple.',
   ],
